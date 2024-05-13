@@ -8,18 +8,18 @@ class SomeClass {
 
     init {
         GlobalScope.launch {
-            Log.i("CONTINUATION", "Старт корутин")
+            Log.i("CONTINUATION", "Старт корутин ${Thread.currentThread().name}")
             notSuspendPrint()
             suspendPrint()
-            Log.i("CONTINUATION", "Конец корутин")
+            Log.i("CONTINUATION", "Конец корутин ${Thread.currentThread().name}")
         }
     }
 
     private fun notSuspendPrint() {
-        Log.i("CONTINUATION", "Не suspend-функция")
+        Log.i("CONTINUATION", "Не suspend-функция ${Thread.currentThread().name}")
     }
 
     private suspend fun suspendPrint() {
-        Log.i("CONTINUATION", "suspend-функция")
+        Log.i("CONTINUATION", "suspend-функция ${Thread.currentThread().name}")
     }
 }
