@@ -1,6 +1,6 @@
 package com.example.dagger2.di_without_dagger.di
 
-import com.example.dagger2.MainActivity
+import com.example.dagger2.di_without_dagger.presentation.MainActivity
 import com.example.dagger2.di_without_dagger.data.Computer
 import com.example.dagger2.di_without_dagger.data.ComputerTower
 import com.example.dagger2.di_without_dagger.data.Keyboard
@@ -10,7 +10,7 @@ import com.example.dagger2.di_without_dagger.data.Mouse
 import com.example.dagger2.di_without_dagger.data.Processor
 import com.example.dagger2.di_without_dagger.data.Storage
 
-class DiComponent {
+class Component {
     fun inject(activity: MainActivity) {
         activity.diComputerViaInject = Computer(
             monitor = Monitor(),
