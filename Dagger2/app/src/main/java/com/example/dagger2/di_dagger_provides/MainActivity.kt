@@ -1,4 +1,4 @@
-package com.example.dagger2.di_dagger_inject
+package com.example.dagger2.di_dagger_provides
 
 import android.os.Bundle
 import android.widget.TextView
@@ -7,15 +7,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.dagger2.R
+import com.example.dagger2.di_dagger_provides.data.Computer
+import com.example.dagger2.di_dagger_provides.di.DaggerComponent
 import javax.inject.Inject
 
 
 class MainActivity : AppCompatActivity() {
 
     @Inject
-    lateinit var notebook: Notebook
+    lateinit var computer: Computer
 
-    private lateinit var notebookViaGet: Notebook
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -26,13 +27,10 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        //di via inject
-        //DaggerComponent.create().inject(this);
-
         //di via get fun
-        notebookViaGet = DaggerComponent.create().getNotebook()
+        computer = DaggerComponent.create().getComputer()
 
         //test
-        findViewById<TextView>(R.id.tv_text).text = (notebookViaGet::class).simpleName
+        findViewById<TextView>(R.id.tv_text).text = (computer::class).simpleName
     }
 }
