@@ -1,17 +1,26 @@
 package com.example.dagger2.di_full_project.di
 
+import android.content.Context
 import com.example.dagger2.di_full_project.data.datasource.ExampleLocalDataSource
 import com.example.dagger2.di_full_project.data.datasource.ExampleLocalDataSourceImpl
 import com.example.dagger2.di_full_project.data.datasource.ExampleRemoteDataSource
 import com.example.dagger2.di_full_project.data.datasource.ExampleRemoteDataSourceImpl
-import dagger.Binds
 import dagger.Module
+import dagger.Provides
 
 @Module
-interface DataModule {
-    @Binds
-    fun bindExampleLocalDataSource(impl: ExampleLocalDataSourceImpl): ExampleLocalDataSource
+class DataModule(private val context:Context) {
+    @Provides
+    fun provideContext(): Context {
+        return context
+    }
+    @Provides
+    fun provideExampleLocalDataSource(impl: ExampleLocalDataSourceImpl): ExampleLocalDataSource{
+        return impl
+    }
 
-    @Binds
-    fun bindExampleRemoteDataSource(impl: ExampleRemoteDataSourceImpl): ExampleRemoteDataSource
+    @Provides
+    fun provideExampleRemoteDataSource(impl: ExampleRemoteDataSourceImpl): ExampleRemoteDataSource{
+        return impl
+    }
 }
