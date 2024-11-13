@@ -3,7 +3,6 @@ package com.example.dagger2.di_full_project.presentation
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.dagger2.R
-import com.example.dagger2.di_full_project.di.AppModule
 import com.example.dagger2.di_full_project.di.DaggerAppComponent
 import javax.inject.Inject
 
@@ -11,14 +10,24 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var viewModel: ExampleViewModel
 
+    /* use custom Builder
     // create dataModule via builder,
     // another modules with empty constructors dagger create automatically
     // use lazy initialization because context isn ready yet
     val component by lazy {
         DaggerAppComponent.builder()
-            .appModule(AppModule(application))
+            .context(application)
+            .logTagName("MY_MY_LOG")
             .build()
     }
+    */
+
+    // use custom Factory
+    val component by lazy {
+        DaggerAppComponent.factory()
+            .create(application, "MY_MY_LOG")
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         // cant use because dataModule constructor isn't empty

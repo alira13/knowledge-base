@@ -5,9 +5,12 @@ import android.util.Log
 import com.example.dagger2.R
 import javax.inject.Inject
 
-class ExampleDatabase @Inject constructor(private val context: Context) {
+class ExampleDatabase @Inject constructor(
+    private val context: Context,
+    private val logTagName: String
+) {
 
     fun method() {
-        Log.d("MY_LOG", "ExampleDatabase method ${context.getString(R.string.app_name)}")
+        Log.d(logTagName, "ExampleDatabase method ${context.getString(R.string.app_name)}")
     }
 }
