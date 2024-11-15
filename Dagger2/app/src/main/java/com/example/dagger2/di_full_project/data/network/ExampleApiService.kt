@@ -4,7 +4,9 @@ import android.content.Context
 import android.util.Log
 import com.example.dagger2.R
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class ExampleApiService @Inject constructor(
     private val context: Context,
     private val logTagName: String
@@ -13,7 +15,7 @@ class ExampleApiService @Inject constructor(
     fun method() {
         Log.d(
             logTagName,
-            "ExampleApiService method ${context.getString(R.string.app_name)}"
+            "ExampleApiService method ${context.getString(R.string.app_name)}, $this"
         )
     }
 }

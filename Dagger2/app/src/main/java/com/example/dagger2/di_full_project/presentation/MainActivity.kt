@@ -1,14 +1,16 @@
 package com.example.dagger2.di_full_project.presentation
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.dagger2.R
-import com.example.dagger2.di_full_project.di.DaggerAppComponent
+import com.example.dagger2.di_full_project.app.ExampleApp
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var viewModel: ExampleViewModel
+
 
     /* use custom Builder
     // create dataModule via builder,
@@ -24,8 +26,7 @@ class MainActivity : AppCompatActivity() {
 
     // use custom Factory
     val component by lazy {
-        DaggerAppComponent.factory()
-            .create(application, "MY_MY_LOG")
+        (application as ExampleApp).component
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,5 +41,6 @@ class MainActivity : AppCompatActivity() {
         component.inject(this)
 
         viewModel.method()
+        Log.d("MY_MY_LOG", viewModel.toString())
     }
 }
