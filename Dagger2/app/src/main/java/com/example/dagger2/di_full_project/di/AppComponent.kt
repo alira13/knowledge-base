@@ -1,6 +1,7 @@
 package com.example.dagger2.di_full_project.di
 
 import android.content.Context
+import com.example.dagger2.di_full_project.presentation.AnotherMainActivity
 import com.example.dagger2.di_full_project.presentation.MainActivity
 import dagger.BindsInstance
 import dagger.Component
@@ -9,6 +10,8 @@ import dagger.Component
 @Component(modules = [DataModule::class, DomainModule::class, ViewModelModule::class])
 interface AppComponent {
     fun inject(activity:MainActivity)
+
+    fun inject(activity:AnotherMainActivity)
 
     /*
     // Способ 1(старые версии Dagger)
