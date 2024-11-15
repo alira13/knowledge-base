@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.example.dagger2.di_full_project.domain.ExampleUseCase
 import javax.inject.Inject
 
-class ExampleViewModel @Inject constructor(
+class AnotherExampleViewModel @Inject constructor(
     private val useCase: ExampleUseCase
 ) : ViewModel() {
 

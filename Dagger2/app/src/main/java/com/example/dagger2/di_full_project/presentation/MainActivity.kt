@@ -3,13 +3,28 @@ package com.example.dagger2.di_full_project.presentation
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.example.dagger2.R
 import com.example.dagger2.di_full_project.app.ExampleApp
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
     @Inject
-    lateinit var viewModel: ExampleViewModel
+    lateinit var viewModelFactory: ViewModelFactory
+
+    private val viewModel by lazy {
+        ViewModelProvider(
+            this,
+            viewModelFactory
+        )[ExampleViewModel::class.java]
+    }
+
+    private val anotherViewModel by lazy {
+        ViewModelProvider(
+            this,
+            viewModelFactory
+        )[AnotherExampleViewModel::class.java]
+    }
 
 
     /* use custom Builder
@@ -42,5 +57,9 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.method()
         Log.d("MY_MY_LOG", viewModel.toString())
+
+        anotherViewModel.method()
+        Log.d("MY_MY_LOG", anotherViewModel.toString())
+
     }
 }
