@@ -6,17 +6,16 @@ import com.example.dagger2.di_full_project.presentation.ExampleViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
-import dagger.multibindings.StringKey
 
 @Module
 interface ViewModelModule {
     @IntoMap
-    @StringKey("ExampleViewModel")
+    @ViewModelKey(ExampleViewModel::class)
     @Binds
     fun bindExampleViewModel(impl: ExampleViewModel): ViewModel
 
     @IntoMap
-    @StringKey("AnotherExampleViewModel")
+    @ViewModelKey(AnotherExampleViewModel::class)
     @Binds
     fun bindAnotherExampleViewModel(impl: AnotherExampleViewModel): ViewModel
 }
