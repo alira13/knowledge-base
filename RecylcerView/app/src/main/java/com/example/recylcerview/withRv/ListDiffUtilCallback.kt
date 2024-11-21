@@ -1,7 +1,9 @@
 package com.example.recylcerview.withRv
 
 import androidx.recyclerview.widget.DiffUtil
+import com.example.recylcerview.core.ShopItem
 
+// Вызывается в главном потоке и может тормозить!!
 class ListDiffUtilCallback(
     private val oldList: List<ShopItem>,
     private val newList: List<ShopItem>

@@ -1,4 +1,4 @@
-package com.example.recylcerview.withRv
+package com.example.recylcerview.core
 
 data class ShopItem(val name: String, var count: Int = 1, var id: Int = UNDEFINED_ID) {
     companion object {

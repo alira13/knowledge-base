@@ -1,4 +1,4 @@
-package com.example.recylcerview.withRv
+package com.example.recylcerview.withRvOpt
 
 import android.os.Bundle
 import android.util.Log
@@ -15,7 +15,7 @@ import com.example.recylcerview.withRv.ListAdapter.Companion.VIEW_LAYOUT_TYPE_2_
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var listAdapter: ListAdapter
+    private lateinit var shopListAdapter: ShopListAdapter
     private var items: MutableList<ShopItem> = mutableListOf()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
         for (i in 0..100) {
-            items.add(i, ShopItem("Item $i", i%2, i))
+            items.add(i, ShopItem("Item $i", i % 2, i))
         }
 
         setupRecyclerView()
@@ -36,19 +36,22 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupRecyclerView() {
         val rv = findViewById<RecyclerView>(R.id.rv_list)
-        with(rv){
-            listAdapter = ListAdapter()
-            listAdapter.items = items
-            adapter = listAdapter
+        with(rv) {
+            shopListAdapter = ShopListAdapter()
+            shopListAdapter.submitList(items)
+            adapter = shopListAdapter
             recycledViewPool.setMaxRecycledViews(R.layout.view_item, VIEW_LAYOUT_TYPE_1_POOL_SIZE)
-            recycledViewPool.setMaxRecycledViews(R.layout.view_item_modified, VIEW_LAYOUT_TYPE_2_POOL_SIZE)
+            recycledViewPool.setMaxRecycledViews(
+                R.layout.view_item_modified,
+                VIEW_LAYOUT_TYPE_2_POOL_SIZE
+            )
             setupLongClickListener()
         }
         setupSwipeListener(rv)
     }
 
     private fun setupLongClickListener() {
-        listAdapter.onLongClick = {
+        shopListAdapter.onLongClick = {
             Log.d("MYMY", "${it}!!!")
         }
     }

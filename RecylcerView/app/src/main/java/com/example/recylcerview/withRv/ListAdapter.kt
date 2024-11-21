@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recylcerview.R
+import com.example.recylcerview.core.ShopItem
 
 class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
     private var createViewHolderCount: Int = 0
@@ -23,6 +24,7 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
             //создали колбэк
             val callback = ListDiffUtilCallback(items, value)
             // передали его в DiffUtil.calculateDiff и посчитали результат,
+            // вызывается в главном потоке и может тормозить!!, лучше использовать наследование ListAdapter
             val diffResult = DiffUtil.calculateDiff(callback)
             // прикрепили результат к адаптеру
             diffResult.dispatchUpdatesTo(this)
