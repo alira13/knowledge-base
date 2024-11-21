@@ -12,9 +12,9 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
     private var createViewHolderCount: Int = 0
     private var bindViewHolderCount: Int = 0
 
-    var onLongClick: ((String) -> Any)? = null
+    var onLongClick: ((ShopItem) -> Any)? = null
 
-    var items: MutableList<String> = mutableListOf()
+    var items: MutableList<ShopItem> = mutableListOf()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -39,8 +39,8 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
     //Определяет как вставить значения внутри view
 //Вызывается 10000 раз уже по числу элементов в списке
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        //Log.d("MY", "bind view holder ${++bindViewHolderCount}")
-        holder.textView.text = items[position]
+        Log.d("MYMY", "bind view holder ${++bindViewHolderCount}")
+        holder.textView.text = items[position].name
 
         holder.itemView.setOnLongClickListener {
             onLongClick?.invoke(items[position])
@@ -55,7 +55,7 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
 
     //какой макет используем для какого элемента
     override fun getItemViewType(position: Int): Int {
-        if (items[position].toInt() % 10 == 0) {
+        if (items[position].count % 2 == 0) {
             return VIEW_LAYOUT_TYPE_1
         } else return VIEW_LAYOUT_TYPE_2
     }

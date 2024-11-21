@@ -15,7 +15,7 @@ import com.example.recylcerview.withRv.ListAdapter.Companion.VIEW_LAYOUT_TYPE_2_
 class MainActivity : AppCompatActivity() {
 
     private lateinit var listAdapter: ListAdapter
-    private var items: MutableList<String> = mutableListOf()
+    private var items: MutableList<ShopItem> = mutableListOf()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
         for (i in 0..100) {
-            items.add(i, "$i")
+            items.add(i, ShopItem("Item $i", i%2, i))
         }
 
         setupRecyclerView()
