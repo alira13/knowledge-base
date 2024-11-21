@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recylcerview.R
 
@@ -16,8 +17,17 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
 
     var items: MutableList<ShopItem> = mutableListOf()
         set(value) {
+            // Изавляемся от notifyDataSetChanged, так как он говорит,
+            // что если изменился один эдемент, то значит изменился весь список и его надо перерисовать в onBind
+            // а нам если изменился один элемент надо и перерисовывать и изменять один элемент
+            //создали колбэк
+            val callback = ListDiffUtilCallback(items, value)
+            // передали его в DiffUtil.calculateDiff и посчитали результат,
+            val diffResult = DiffUtil.calculateDiff(callback)
+            // прикрепили результат к адаптеру
+            diffResult.dispatchUpdatesTo(this)
+            // обновили значение
             field = value
-            notifyDataSetChanged()
         }
 
 
@@ -39,7 +49,7 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
     //Определяет как вставить значения внутри view
 //Вызывается 10000 раз уже по числу элементов в списке
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        Log.d("MYMY", "bind view holder ${++bindViewHolderCount}")
+        Log.d("MYMYMY", "bind view holder ${++bindViewHolderCount}")
         holder.textView.text = items[position].name
 
         holder.itemView.setOnLongClickListener {
