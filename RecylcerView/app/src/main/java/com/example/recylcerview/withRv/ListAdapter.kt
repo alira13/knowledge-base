@@ -11,17 +11,14 @@ import com.example.recylcerview.R
 class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
     private var createViewHolderCount: Int = 0
     private var bindViewHolderCount: Int = 0
-    private var items: MutableList<String> = mutableListOf()
+
+    var onLongClick: ((String) -> Any)? = null
+
+    var items: MutableList<String> = mutableListOf()
         set(value) {
             field = value
             notifyDataSetChanged()
         }
-
-    init {
-        for (i in 0..100) {
-            items.add(i, "$i")
-        }
-    }
 
 
     // Определяет как создать view(вызовется примерно 20(10 на экране + по 5 с запасом))
@@ -43,10 +40,11 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
 //Вызывается 10000 раз уже по числу элементов в списке
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         //Log.d("MY", "bind view holder ${++bindViewHolderCount}")
-        val currentString = items[position]
-        holder.textView.text = currentString
+        holder.textView.text = items[position]
+
         holder.itemView.setOnLongClickListener {
-            holder.textView.text = "$currentString!!!"
+            onLongClick?.invoke(items[position])
+
             true
         }
     }
