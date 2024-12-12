@@ -1,6 +1,7 @@
 package com.example.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -26,6 +27,7 @@ class PrepareFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d("onCreate", "PrepareFragment")
         arguments?.let {
             appName = it.getString(ARG_APP_NAME)
             actionName = it.getString(ARG_ACTION_NAME)
