@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">JetpackCompose</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_favorite">Favorites</string>
+    <string name="title_profile">Profile</string>
+
+    <string name="desc_icon_home">Open home</string>
+    <string name="desc_icon_favorite">Open favorites</string>
+    <string name="desc_icon_profile">Open profile</string>
 </resources>
