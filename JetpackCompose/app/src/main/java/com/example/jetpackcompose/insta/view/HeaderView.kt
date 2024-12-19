@@ -6,35 +6,42 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.jetpackcompose.R
+import com.example.jetpackcompose.insta.MainViewModel
 
-@Preview
+
 @Composable
-fun HeaderView() {
+fun HeaderView(viewModel: MainViewModel) {
+    val isFollowed = viewModel.isFollowing.observeAsState(false)
+
     Column {
         MenuView()
         StaticticView()
-        ProfileButtonsView()
+        ProfileButtonsView(isFollowed.value, viewModel)
     }
 }
 
@@ -96,7 +103,9 @@ private fun ProfilePictureView() {
 }
 
 @Composable
-private fun ProfileButtonsView() {
+private fun ProfileButtonsView(isFollowed: Boolean, viewModel: MainViewModel) {
+    //переживает не только рекомпозицию, но и пересоздание фрагмента или activity
+
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -105,14 +114,16 @@ private fun ProfileButtonsView() {
         horizontalArrangement = Arrangement.SpaceBetween,
     )
     {
-        ButtonView("Edit profile")
-        ButtonView("Share profile")
-        ButtonView("+")
+        FollowButtonView(isFollowed) { viewModel.changeFollowing() }
+        Spacer(modifier = Modifier.width(8.dp))
+        ButtonView("Message", 1f, {})
+        Spacer(modifier = Modifier.width(8.dp))
+        ButtonView("+", 0.25f, {})
     }
 }
 
 @Composable
-private fun ButtonView(text: String) {
+private fun RowScope.ButtonView(text: String, weight: Float, onClick: () -> Unit) {
     Button(shape = RoundedCornerShape(8.dp),
         colors = ButtonColors(
             containerColor = MaterialTheme.colorScheme.secondary,
@@ -120,14 +131,48 @@ private fun ButtonView(text: String) {
             disabledContainerColor = MaterialTheme.colorScheme.secondary,
             disabledContentColor = MaterialTheme.colorScheme.onSecondary
         ),
-
-        onClick = { }
+        modifier = Modifier.weight(weight),
+        onClick = { onClick() }
     )
     {
         Text(
             text = text,
             fontSize = 10.sp
         )
+    }
+}
+
+@Composable
+private fun RowScope.FollowButtonView(isFollowed: Boolean, onClick: () -> Unit) {
+
+
+    Button(
+        shape = RoundedCornerShape(8.dp),
+        colors = ButtonDefaults.buttonColors(
+            containerColor = if (isFollowed) {
+                MaterialTheme.colorScheme.secondary.copy(alpha = 0.5f)
+            } else {
+                MaterialTheme.colorScheme.secondary
+            },
+            contentColor = MaterialTheme.colorScheme.onSecondary,
+        ),
+        modifier = Modifier.weight(1f),
+        onClick = {
+            onClick()
+        }
+    )
+    {
+        if (isFollowed)
+            Text(
+                text = "Following",
+                fontSize = 10.sp
+            )
+        else {
+            Text(
+                text = "Follow",
+                fontSize = 10.sp
+            )
+        }
     }
 }
 
