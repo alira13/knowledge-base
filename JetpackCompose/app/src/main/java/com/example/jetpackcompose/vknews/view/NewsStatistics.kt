@@ -1,4 +1,3 @@
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -17,7 +16,7 @@ import com.example.jetpackcompose.R
 
 @Preview(showBackground = true)
 @Composable
-fun Statistics() {
+fun NewsStatistics() {
     Row(modifier = Modifier.fillMaxWidth()) {
         Row (modifier = Modifier.weight(1f)){
             MenuItem("206", R.drawable.ic_instagram, "")

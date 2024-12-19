@@ -18,7 +18,7 @@ import com.example.jetpackcompose.R
 
 @Preview(showBackground = true)
 @Composable
-fun Content() {
+fun NewsContent() {
     Column(modifier = Modifier.fillMaxWidth()) {
         Text(
             text = "Lorem Ipsum является стандартной \"рыбой\" для текстов на латинице с начала XVI века",

@@ -1,6 +1,6 @@
 package com.example.jetpackcompose.vknews.view
 
-import androidx.compose.foundation.layout.padding
+import android.annotation.SuppressLint
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material3.FloatingActionButton
@@ -13,23 +13,20 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.SnackbarResult
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import kotlinx.coroutines.launch
 
-@Preview
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun MainScreen() {
+fun NewsNavigation(NewsContent: @Composable () -> Unit) {
     val items = listOf(
-        NavigationItem.MainItem,
-        NavigationItem.FavoriteItem,
-        NavigationItem.ProfileItem
+        ScreenNavigationItem.MainItem,
+        ScreenNavigationItem.FavoriteItem,
+        ScreenNavigationItem.ProfileItem
     )
 
     val scope = rememberCoroutineScope()
@@ -80,7 +77,8 @@ fun MainScreen() {
                     )
                 }
             }
-        }) {
-        Text("Content", modifier = Modifier.padding(it))
+        })
+    {
+        NewsContent()
     }
 }

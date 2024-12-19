@@ -30,7 +30,7 @@ import com.example.jetpackcompose.R
 
 @Preview()
 @Composable
-fun Header() {
+fun NewsHeader() {
     Card(
         shape = RectangleShape,
         modifier = Modifier
