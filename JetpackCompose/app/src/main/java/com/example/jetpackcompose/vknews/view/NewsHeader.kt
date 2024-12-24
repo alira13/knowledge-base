@@ -27,10 +27,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.jetpackcompose.R
+import com.example.jetpackcompose.vknews.domain.NewsItem
 
-@Preview()
 @Composable
-fun NewsHeader() {
+fun NewsHeader(newsItem: NewsItem) {
     Card(
         shape = RectangleShape,
         modifier = Modifier
@@ -42,7 +42,7 @@ fun NewsHeader() {
             horizontalArrangement = Arrangement.Start,
         ) {
             Image(
-                painter = painterResource(R.drawable.ic_account),
+                painter = painterResource(newsItem.groupAvatarResId),
                 contentDescription = "",
                 modifier = Modifier
                     .clip(shape = CircleShape)
@@ -58,7 +58,7 @@ fun NewsHeader() {
             ) {
 
                 Text(
-                    text = "Какая-то группа",
+                    text = newsItem.groupName,
                     fontSize = 16.sp,
                     fontWeight = FontWeight(600),
                     fontFamily = FontFamily.SansSerif
@@ -66,7 +66,7 @@ fun NewsHeader() {
 
                 Spacer(modifier = Modifier.height(4.dp))
 
-                Text("20:00", fontSize = 16.sp)
+                Text(newsItem.publicationTime, fontSize = 16.sp)
             }
 
             Icon(

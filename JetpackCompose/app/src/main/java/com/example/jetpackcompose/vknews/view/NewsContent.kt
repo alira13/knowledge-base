@@ -15,13 +15,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.jetpackcompose.R
+import com.example.jetpackcompose.vknews.domain.NewsItem
+import com.example.jetpackcompose.vknews.domain.NewsStatisticItem
 
-@Preview(showBackground = true)
 @Composable
-fun NewsContent() {
+fun NewsContent(newsItem: NewsItem) {
     Column(modifier = Modifier.fillMaxWidth()) {
         Text(
-            text = "Lorem Ipsum является стандартной \"рыбой\" для текстов на латинице с начала XVI века",
+            text = newsItem.publicationText,
             fontWeight = FontWeight.SemiBold,
             fontSize = 16.sp
         )
@@ -31,7 +32,7 @@ fun NewsContent() {
                 .fillMaxWidth()
                 .background(Color.White),
             contentScale = ContentScale.FillWidth,
-            painter = painterResource(R.drawable.ic_android),
+            painter = painterResource(newsItem.publicationResId),
             contentDescription = ""
         )
     }

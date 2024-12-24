@@ -16,10 +16,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.jetpackcompose.vknews.domain.NewsItem
+import com.example.jetpackcompose.vknews.domain.NewsStatisticItem
 
-@Preview
 @Composable
-fun ScreenContent() {
+fun ScreenContent(newsItem: NewsItem, onStatisticItemClickLister: (NewsStatisticItem) -> Unit) {
     Card(
         shape = RectangleShape,
         colors = CardColors(
@@ -32,11 +33,11 @@ fun ScreenContent() {
         modifier = Modifier.padding(8.dp),
     ) {
         Column(modifier = Modifier.padding(8.dp)) {
-            NewsHeader()
+            NewsHeader(newsItem)
             Spacer(modifier = Modifier.height(4.dp))
-            NewsContent()
+            NewsContent(newsItem)
             Spacer(modifier = Modifier.height(4.dp))
-            NewsStatistics()
+            NewsStatistics(newsItem, onItemClickListener = onStatisticItemClickLister)
         }
     }
 }
