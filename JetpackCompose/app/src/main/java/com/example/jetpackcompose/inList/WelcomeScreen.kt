@@ -100,20 +100,18 @@ fun ListItem(text: String) {
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.padding(bottom = 8.dp)
         ) {
-            Box(
+            Image(
+                painter = painterResource(R.drawable.ic_list_item_placeholder),
+                contentDescription = "",
+                alignment = Alignment.Center,
                 modifier = Modifier
                     .size(40.dp)
-                    .background(color = MaterialTheme.colorScheme.secondaryContainer, shape = RoundedCornerShape(8.dp)),
-                content = {
-                    Image(
-                        painter = painterResource(R.drawable.ic_list_item_placeholder),
-                        contentDescription = "",
-                        alignment = Alignment.Center,
-                        modifier = Modifier.size(24.dp),
-                        colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onSecondaryContainer)
+                    .background(
+                        color = MaterialTheme.colorScheme.secondaryContainer,
+                        shape = RoundedCornerShape(8.dp)
                     )
-                },
-                contentAlignment = Alignment.Center
+                    .padding(8.dp),
+                colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onSecondaryContainer)
             )
 
             Text(
