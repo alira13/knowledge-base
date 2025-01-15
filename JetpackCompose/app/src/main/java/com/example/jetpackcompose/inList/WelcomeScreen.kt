@@ -1,5 +1,6 @@
 package com.example.jetpackcompose.inList
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
@@ -10,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.MaterialTheme
@@ -18,9 +20,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
+import com.example.jetpackcompose.R
 import com.example.jetpackcompose.inList.theme.JetpackComposeTheme
 import java.util.Locale
 
@@ -97,10 +103,17 @@ fun ListItem(text: String) {
             Box(
                 modifier = Modifier
                     .size(40.dp)
-                    .border(
-                        width = 0.dp, shape = RectangleShape, color = Color.Gray
+                    .background(color = MaterialTheme.colorScheme.secondaryContainer, shape = RoundedCornerShape(8.dp)),
+                content = {
+                    Image(
+                        painter = painterResource(R.drawable.ic_list_item_placeholder),
+                        contentDescription = "",
+                        alignment = Alignment.Center,
+                        modifier = Modifier.size(24.dp),
+                        colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onSecondaryContainer)
                     )
-                    .background(color = Color.Gray)
+                },
+                contentAlignment = Alignment.Center
             )
 
             Text(
