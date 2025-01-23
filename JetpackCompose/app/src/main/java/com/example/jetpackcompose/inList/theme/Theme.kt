@@ -12,9 +12,9 @@ import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
 
-    tertiary = Black,
-    background = Black,
-    surface = Black,
+    tertiary = BlackGreen,
+    background = BlackGreen,
+    surface = BlackGreen,
     onSecondary = White,
     onTertiary = White,
     onBackground = White,
@@ -29,7 +29,7 @@ private val DarkColorScheme = darkColorScheme(
     onPrimaryContainer = White,
 
     //button not active
-    secondaryContainer = LightThemeLightGreen,
+    secondaryContainer = DarkThemeLightGreen,
     onSecondaryContainer = White
 )
 
@@ -39,14 +39,14 @@ private val LightColorScheme = lightColorScheme(
     background = White,
     surface = White,
 
-    onSecondary = Black,
-    onTertiary = Black,
-    onBackground = Black,
-    onSurface = Black,
+    onSecondary = BlackGreen,
+    onTertiary = BlackGreen,
+    onBackground = BlackGreen,
+    onSurface = BlackGreen,
 
     //screen colors
     primary = White,
-    onPrimary = Black,
+    onPrimary = BlackGreen,
 
     //button active
     primaryContainer = LightThemeBrightGreen,
@@ -54,7 +54,7 @@ private val LightColorScheme = lightColorScheme(
 
     //button not active
     secondaryContainer = LightThemeLightGreen,
-    onSecondaryContainer = White
+    onSecondaryContainer = BlackGreen
     )
 
 @Composable
