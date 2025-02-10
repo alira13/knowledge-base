@@ -1,4 +1,6 @@
-package getterSetter
+package com.example.getterSetter
+
+import getterSetter.Worker
 
 fun main() {
     val worker = Worker()
