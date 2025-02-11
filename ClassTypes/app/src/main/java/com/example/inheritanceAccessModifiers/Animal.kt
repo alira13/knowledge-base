@@ -1,4 +1,4 @@
-package com.example.classtypes
+package com.example.inheritanceAccessModifiers
 
 open class Animal(val name:String) {
     public fun liveAnimalPublic() {

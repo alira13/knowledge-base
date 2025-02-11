@@ -1,4 +1,4 @@
-package com.example.classtypes
+package com.example.inheritanceAccessModifiers
 
 class Cat(name: String) : CatFamily(name) {
 
