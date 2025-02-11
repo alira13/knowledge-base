@@ -145,3 +145,7 @@ class TestCases {
         if (person7 !== person8) println("Test 24 passed") else throw Exception("Test 24 failed")
     }
 }
+
+fun main() {
+    TestCases().runTests()
+}

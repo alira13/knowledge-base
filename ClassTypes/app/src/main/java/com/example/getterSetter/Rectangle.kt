@@ -1,9 +1,17 @@
-package getterSetter
+package com.example.getterSetter
 
-class Rectangle(var width: Int, var height: Int) {
+class Rectangle(private var width: Int, private var height: Int) {
 
-    val area: Int
+    private val area: Int
         get() {
             return width * height
         }
+
+    override fun toString(): String {
+        return "Rectangle(width=$width, height=$height, area=$area)"
+    }
+}
+
+fun main() {
+    println(Rectangle(10, 2))
 }
