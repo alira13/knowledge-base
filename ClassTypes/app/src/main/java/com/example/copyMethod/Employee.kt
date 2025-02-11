@@ -1,18 +1,25 @@
 package com.example.copyMethod
 
 class Employee(val id: Int, val name: String) {
-    var tasks = mutableListOf<Task>()
-    var archivedTasks = mutableListOf<Task>() // TODO: Реализовать функциональность архивирования задач
+    private val _tasks = mutableListOf<Task>()
+    val tasks
+        get() = _tasks.toList()
+
+    private val _archivedTasks =
+        mutableListOf<Task>()
+    val archivedTasks: List<Task>
+        get() = _archivedTasks.toList()
 
     fun addTask(task: Task) {
-        tasks.add(task)
+        _tasks.add(task)
         println("Добавлена задача: ${task.title} для сотрудника $name.")
     }
 
     fun removeTask(taskId: Int) {
-        val task = tasks.find { it.id == taskId }
+        val task = _tasks.find { it.id == taskId }
         if (task != null) {
-            tasks.remove(task)
+            _tasks.remove(task)
+            _archivedTasks.add(task)
             println("Задача ${task.title} удалена.")
         } else {
             println("Задача с ID $taskId не найдена.")
@@ -20,9 +27,11 @@ class Employee(val id: Int, val name: String) {
     }
 
     fun updateTaskStatus(taskId: Int, newStatus: String) {
-        val task = tasks.find { it.id == taskId }
+        val task = _tasks.find { it.id == taskId }
         if (task != null) {
-            task.status = newStatus  // Прямое изменение, требующее изменения на использование copy()
+            _tasks.remove(task)
+            _archivedTasks.add(task)
+            _tasks.add(task.copy(status = newStatus))
             println("Статус задачи ${task.title} изменен на '$newStatus'.")
         } else {
             println("Задача с ID $taskId не найдена.")
@@ -30,9 +39,11 @@ class Employee(val id: Int, val name: String) {
     }
 
     fun changeTaskAssignee(taskId: Int, newAssignee: String) {
-        val task = tasks.find { it.id == taskId }
+        val task = _tasks.find { it.id == taskId }
         if (task != null) {
-            task.assignedTo = newAssignee  // Прямое изменение, требующее изменения на использование copy()
+            _tasks.remove(task)
+            _archivedTasks.add(task)
+            _tasks.add(task.copy(assignedTo = newAssignee))
             println("Задача ${task.title} переназначена на $newAssignee.")
         } else {
             println("Задача с ID $taskId не найдена.")
@@ -40,9 +51,11 @@ class Employee(val id: Int, val name: String) {
     }
 
     fun updateTaskPriority(taskId: Int, newPriority: String) {
-        val task = tasks.find { it.id == taskId }
+        val task = _tasks.find { it.id == taskId }
         if (task != null) {
-            task.priority = newPriority  // Прямое изменение, требующее изменения на использование copy()
+            _tasks.remove(task)
+            _archivedTasks.add(task)
+            _tasks.add(task.copy(priority = newPriority))
             println("Приоритет задачи ${task.title} изменен на '$newPriority'.")
         } else {
             println("Задача с ID $taskId не найдена.")
@@ -50,10 +63,11 @@ class Employee(val id: Int, val name: String) {
     }
 
     fun modifyTaskDetails(taskId: Int, newTitle: String, newDescription: String) {
-        val task = tasks.find { it.id == taskId }
+        val task = _tasks.find { it.id == taskId }
         if (task != null) {
-            task.title = newTitle  // Прямое изменение, требующее изменения на использование copy()
-            task.description = newDescription  // Прямое изменение, требующее изменения на использование copy()
+            _tasks.remove(task)
+            _archivedTasks.add(task)
+            _tasks.add(task.copy(title = newTitle, description = newDescription))
             println("Детали задачи ${task.id} обновлены.")
         } else {
             println("Задача с ID $taskId не найдена.")
@@ -62,6 +76,6 @@ class Employee(val id: Int, val name: String) {
 
     fun printTasks() {
         println("Список задач для сотрудника $name:")
-        tasks.forEach { it.printTaskInfo() }
+        _tasks.forEach { it.printTaskInfo() }
     }
 }
