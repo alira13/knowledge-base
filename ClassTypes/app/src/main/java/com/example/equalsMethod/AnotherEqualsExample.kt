@@ -1,7 +1,7 @@
 package com.example.equalsMethod
 
 // Класс с переопределенным методом equals по id
-class Person(val id: Int, val name: String) {
+open class Person(val id: Int, val name: String) {
 
     override fun equals(other: Any?): Boolean {
         if (other !is Person) return false
