@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "name": "Ivan",
+    "email": "Ivan@mail.ru",
+    "registered_at": "11.01.2021"
+  },
+  {
+    "id": 2,
+    "name": "Maria",
+    "email": "Maria@mail.ru",
+    "registered_at": "11.01.2022"
+  }
+]
