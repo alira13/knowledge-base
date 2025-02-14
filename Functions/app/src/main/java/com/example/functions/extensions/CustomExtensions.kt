@@ -27,6 +27,7 @@ fun processList() {
     println("Сумма чётных чисел: $result")
 }
 
+
 fun main() {
     processList()
 }
