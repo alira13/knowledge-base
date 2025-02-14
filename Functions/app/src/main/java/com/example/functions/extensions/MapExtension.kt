@@ -20,6 +20,13 @@ fun main() {
 
     // Ожидаемый результат: {Alice=Отлично, Bob=Хорошо, Charlie=Удовлетворительно}
     println(categorizedScores)
+
+    val str = listOf(
+        "Alice",
+        "Bob",
+        "Charlie"
+    )
+    println(str.listToMap())
 }
 
 fun <K, V, R> Map<K, V>.transformValues(transform: (V) -> R): Map<K, R> {
@@ -29,4 +36,14 @@ fun <K, V, R> Map<K, V>.transformValues(transform: (V) -> R): Map<K, R> {
         resultMap[itemValue.key] = newValue
     }
     return resultMap
+}
+
+
+fun <T> List<T>.listToMap(): Map<Int, T> {
+    // Реализуйте функцию здесь
+    val map = mutableMapOf<Int, T>()
+    val t = this.map(
+        transform = { map[this.indexOf(it)] = it },
+    )
+    return map
 }
