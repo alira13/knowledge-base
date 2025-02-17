@@ -1,10 +1,14 @@
 package com.example.functions.scopeFunctions
 
+import kotlin.contracts.InvocationKind
+import kotlin.contracts.contract
+
 // Вызывает функцию lambda c аргументом this и возвращает результат
 // может быть вызвала и у not null значения
 
-inline fun <T, R> T.myLet(lambda: (T) -> R) {
-    lambda(this)
+// ПОЗВОЛЬ выполнить дейтсвие над ОБЪЕКТОМ и верни результат
+inline fun <T, R> T.myLet(lambda: (T) -> R): R {
+    return lambda(this)
 }
 
 var age: Int? = null

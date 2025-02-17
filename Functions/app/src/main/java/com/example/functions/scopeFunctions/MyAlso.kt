@@ -1,5 +1,6 @@
 package com.example.functions.scopeFunctions
 
+// выполни ТАКЖЕ какое-то действие НЕ ИЗМЕНЯЯ объект, верни сам объект
 inline fun <T> T.myAlso(lambda: (T) -> Unit): T {
     lambda(this)
     return this
