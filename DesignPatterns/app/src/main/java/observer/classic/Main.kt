@@ -1,4 +1,5 @@
-package observer.impl
+package observer.classic
+
 
 import kotlin.concurrent.thread
 import kotlin.random.Random
@@ -9,12 +10,17 @@ fun main() {
     val userLogger2 = UserLogger("LOGGER2")
     repository.addOnDataChangeListener(userLogger1)
     repository.addOnDataChangeListener(userLogger2)
+    val userIds = mutableListOf<Int>(0, 10)
 
     thread {
         while (true) {
-            val num = Random.nextInt(0, 10)
-            if (num % 2 == 0) repository.addUser("User$num")
-            else repository.removeUser("User$num")
+            val id = Random.nextInt(userIds.min(), userIds.max())
+            userIds.add(id)
+            val newUser = "User$id"
+            if (repository.data.contains(newUser))
+                repository.removeUser(newUser)
+            else
+                repository.addUser(newUser)
             Thread.sleep(1000)
         }
     }

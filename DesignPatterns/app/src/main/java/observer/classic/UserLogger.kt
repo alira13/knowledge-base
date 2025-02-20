@@ -1,8 +1,8 @@
-package observer.impl
+package observer.classic
 
 
 // Класс наблюдателя, который подписывается на изменения в UserRepository
-class UserLogger(val name: String) : Observer<List<String>> {
+class UserLogger(private val name: String) : Observer<List<String>> {
     // Метод onUsersChanged(), который выводит сообщение в консоль в формате:
     // [LOG] Пользователи обновлены: <список пользователей>
     override fun onDataChanged(newData: List<String>) {

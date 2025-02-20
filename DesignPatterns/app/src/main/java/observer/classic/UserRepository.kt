@@ -1,4 +1,4 @@
-package observer.impl
+package observer.classic
 
 // Хранилище пользователей
 class UserRepository : Observable<List<String>> {
@@ -20,6 +20,8 @@ class UserRepository : Observable<List<String>> {
     // 3 Метод подписки
     override fun addOnDataChangeListener(observer: Observer<List<String>>) {
         _observers.add(observer)
+        // отдаем актуальное значение новому observer
+        observer.onDataChanged(data)
     }
 
     // 4 Метод отписки

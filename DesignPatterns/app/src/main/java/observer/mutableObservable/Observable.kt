@@ -1,4 +1,4 @@
-package observer.impl
+package observer.mutableObservable
 
 // Где T-тип данных, на изменения которых мы подписываемся, например список строк
 interface Observable<T> {
