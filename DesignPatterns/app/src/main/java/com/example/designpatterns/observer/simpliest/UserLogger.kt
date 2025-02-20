@@ -1,4 +1,4 @@
-package observer.simpliest
+package com.example.designpatterns.observer.simpliest
 
 // Хранилище пользователей
 

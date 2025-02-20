@@ -22,7 +22,7 @@ object SimpliestRepository {
     }
 }
 
-fun main(){
+fun main() {
     println(SimpliestRepository.persons)
 }
 

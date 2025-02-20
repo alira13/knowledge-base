@@ -1,7 +1,6 @@
-package observer.simpliest
+package com.example.designpatterns.observer.classic
 
-import observer.classic.UserLogger
-import observer.classic.UserRepository
+
 import kotlin.concurrent.thread
 import kotlin.random.Random
 

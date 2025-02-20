@@ -1,12 +1,12 @@
-package observer.mutableObservable
+package com.example.designpatterns.observer.classic
 
 // Где T-тип данных, на изменения которых мы подписываемся, например список строк
 interface Observable<T> {
     // 1 Данные, на изменение которых мы подписываемся
-    val data : T
+    val data: T
 
     // 2 Подписчики
-    val observers:List<Observer<T>>
+    val observers: List<Observer<T>>
 
     // 3 Метод подписки
     fun addOnDataChangeListener(observer: Observer<T>) {

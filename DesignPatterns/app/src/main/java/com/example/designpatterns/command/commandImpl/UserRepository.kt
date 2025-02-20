@@ -1,18 +1,23 @@
-package observer.mutableObservable
+package com.example.designpatterns.command.commandImpl
+
+import com.example.designpatterns.observer.mutableObservable.MutableObservable
+import com.example.designpatterns.observer.mutableObservable.Observable
 
 
-// Хранилище пользователей
+// Receiver
 class UserRepository {
     // Данные, с которыми мы работаем внутри репозитория
     private val _data = mutableListOf<String>()
 
     // 1 Данные, на изменение которых мы подписываемся
-    private val _observableData = MutableObservable<List<String>>(_data)
+    private val _observableData =
+        MutableObservable<List<String>>(_data)
     val observableData: Observable<List<String>>
         get() = _observableData
 
     //  Данные, на изменение которых мы подписываемся
-    private val _observableDataSize = MutableObservable<Int>(_data.size)
+    private val _observableDataSize =
+        MutableObservable<Int>(_data.size)
     val observableDataSize: Observable<Int>
         get() = _observableDataSize
 
@@ -23,6 +28,7 @@ class UserRepository {
         // уведомить подписчиков об изменении списка пользователей
         _observableData.data = _data
         _observableDataSize.data = _data.size
+        Thread.sleep(5000)
     }
 
     fun removeUser(user: String) {
@@ -31,5 +37,6 @@ class UserRepository {
         // уведомить подписчиков об изменении списка пользователей
         _observableData.data = _data
         _observableDataSize.data = _data.size
+        Thread.sleep(3000)
     }
 }

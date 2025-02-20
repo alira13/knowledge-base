@@ -1,4 +1,4 @@
-package observer.mutableObservableExample
+package com.example.designpatterns.observer.mutableObservableExample
 
 import kotlin.concurrent.thread
 import kotlin.random.Random

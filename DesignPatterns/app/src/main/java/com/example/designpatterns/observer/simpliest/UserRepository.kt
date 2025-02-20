@@ -1,21 +1,24 @@
-package observer.simpliest
+package com.example.designpatterns.observer.simpliest
 
 
 class UserRepository {
-    private val users = mutableListOf<String>()
+    private val _users = mutableListOf<String>()
+
+    val users:List<String>
+        get() {return _users}
 
     // 1 Добавить список подписчиков (наблюдателей) UserLogger
     private val listeners = mutableListOf<UserLogger>()
 
     fun addUser(user: String) {
-        users.add(user)
+        _users.add(user)
         println("Add user $user")
         // 2 Уведомить подписчиков об изменении списка пользователей
         notifyObservers()
     }
 
     fun removeUser(user: String) {
-        users.remove(user)
+        _users.remove(user)
         println("Remove user $user")
         // 2 Уведомить подписчиков об изменении списка пользователей
         notifyObservers()
@@ -35,6 +38,6 @@ class UserRepository {
 
     // 5 Реализовать метод уведомления подписчиков
     private fun notifyObservers() {
-        listeners.forEach { it.onUsersChanged(users) }
+        listeners.forEach { it.onUsersChanged(_users) }
     }
 }

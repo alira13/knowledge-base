@@ -12,7 +12,7 @@ class SettingsManager private constructor(context: Context) : BaseManager(contex
         return settings[key]
     }
 
-    companion object Impl1{
+    companion object Impl1 {
 
         private var instance: SettingsManager? = null
 

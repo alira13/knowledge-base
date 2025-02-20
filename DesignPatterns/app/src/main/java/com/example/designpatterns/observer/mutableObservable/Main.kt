@@ -1,5 +1,4 @@
-package observer.classic
-
+package com.example.designpatterns.observer.mutableObservable
 
 import kotlin.concurrent.thread
 import kotlin.random.Random
@@ -8,8 +7,12 @@ fun main() {
     val repository = UserRepository()
     val userLogger1 = UserLogger("LOGGER1")
     val userLogger2 = UserLogger("LOGGER2")
-    repository.addOnDataChangeListener(userLogger1)
-    repository.addOnDataChangeListener(userLogger2)
+    val userLogger3 = UserSizeLogger("LOGGER3")
+    repository.observableData.addOnDataChangeListener(userLogger1)
+    repository.observableData.addOnDataChangeListener(userLogger2)
+    repository.observableDataSize.addOnDataChangeListener(userLogger3)
+    repository.observableDataSize.addOnDataChangeListener { println("Im not a logger but data size was changed") }
+
     val userIds = mutableListOf<Int>(0, 10)
 
     thread {
@@ -17,7 +20,7 @@ fun main() {
             val id = Random.nextInt(userIds.min(), userIds.max())
             userIds.add(id)
             val newUser = "User$id"
-            if (repository.data.contains(newUser))
+            if (repository.observableData.data.contains(newUser))
                 repository.removeUser(newUser)
             else
                 repository.addUser(newUser)
@@ -27,6 +30,6 @@ fun main() {
 
     thread {
         Thread.sleep(5000)
-        repository.deleteOnDataChangeListener(userLogger1)
+        repository.observableData.deleteOnDataChangeListener(userLogger1)
     }
 }

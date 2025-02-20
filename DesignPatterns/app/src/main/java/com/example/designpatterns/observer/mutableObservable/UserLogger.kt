@@ -1,4 +1,4 @@
-package observer.mutableObservable
+package com.example.designpatterns.observer.mutableObservable
 
 // Класс наблюдателя, который подписывается на изменения в UserRepository
 abstract class Logger<T>(private val name: String) : Observer<T> {

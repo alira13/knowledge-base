@@ -1,6 +1,6 @@
-package observer.classic
+package com.example.designpatterns.observer.mutableObservable
 
 // Где T-тип данных, на изменения которых мы подписываемся, например список строк
-interface Observer<T> {
+fun interface Observer<T> {
     fun onDataChanged(newData: T)
 }

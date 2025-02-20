@@ -64,7 +64,7 @@ class SafeDoubleCheckRepository private constructor() {
     }
 }
 
-fun main(){
+fun main() {
     val persons = SafeDoubleCheckRepository.getInstance("1").persons
     println(persons)
 }

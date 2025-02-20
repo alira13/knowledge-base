@@ -1,6 +1,7 @@
-package observer.mutableObservable
+package com.example.designpatterns.observer.mutableObservable
 
-class MutableObservable<T>(private val initialValue: T) : Observable<T> {
+class MutableObservable<T>(private val initialValue: T) :
+    Observable<T> {
 
     // Разница с обычной реализацией 1 Вот тут изменяемая дата,
     // которая как только в нее что-то положат, сразу всех оповещает.
@@ -12,7 +13,8 @@ class MutableObservable<T>(private val initialValue: T) : Observable<T> {
         }
 
     // 2 Подписчики
-    private var _observers: MutableList<Observer<T>> = mutableListOf()
+    private var _observers: MutableList<Observer<T>> =
+        mutableListOf()
     override val observers: List<Observer<T>>
         get() = _observers
 

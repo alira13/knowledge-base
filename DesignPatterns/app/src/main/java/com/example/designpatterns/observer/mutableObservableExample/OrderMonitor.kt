@@ -1,4 +1,4 @@
-package observer.mutableObservableExample
+package com.example.designpatterns.observer.mutableObservableExample
 
 
 class OrderMonitor : Observer<Int> {

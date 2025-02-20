@@ -1,4 +1,4 @@
-package observer.mutableObservableExample
+package com.example.designpatterns.observer.mutableObservableExample
 
 fun interface Observer<T> {
     fun onChanged(data: T)

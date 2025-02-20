@@ -1,4 +1,4 @@
-package observer.classic
+package com.example.designpatterns.observer.classic
 
 // Хранилище пользователей
 class UserRepository : Observable<List<String>> {

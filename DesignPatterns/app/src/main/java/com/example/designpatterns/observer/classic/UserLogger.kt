@@ -1,4 +1,4 @@
-package observer.classic
+package com.example.designpatterns.observer.classic
 
 
 // Класс наблюдателя, который подписывается на изменения в UserRepository
