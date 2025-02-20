@@ -2,13 +2,16 @@ package observer.mutableObservable
 
 class MutableObservable<T>(private val initialValue: T) : Observable<T> {
 
+    // Разница с обычной реализацией 1 Вот тут изменяемая дата,
+    // которая как только в нее что-то положат, сразу всех оповещает.
+    // Не нужно дополнительно вызывать методы оповещения
     override var data: T = initialValue
         set(value) {
             field = value
             notifyObservers()
         }
 
-    // 4 Подписчики
+    // 2 Подписчики
     private var _observers: MutableList<Observer<T>> = mutableListOf()
     override val observers: List<Observer<T>>
         get() = _observers
@@ -18,6 +21,7 @@ class MutableObservable<T>(private val initialValue: T) : Observable<T> {
         // не можем использовать, потому что нужен mutable list
         // поэтому только в реализации можем описать метод
         _observers.add(observer)
+        observer.onDataChanged(data)
     }
 
     // 4 Метод отписки

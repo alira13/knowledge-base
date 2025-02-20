@@ -1,30 +1,35 @@
 package observer.mutableObservable
 
+
 // Хранилище пользователей
-class UserRepository{
+class UserRepository {
     // Данные, с которыми мы работаем внутри репозитория
     private val _data = mutableListOf<String>()
 
     // 1 Данные, на изменение которых мы подписываемся
-    val observableData =  MutableObservable<List<String>>(_data)
+    private val _observableData = MutableObservable<List<String>>(_data)
+    val observableData: Observable<List<String>>
+        get() = _observableData
 
-    // 1 Данные, на изменение которых мы подписываемся
-    val observableDataSize =  MutableObservable<Int>(_data.size)
+    //  Данные, на изменение которых мы подписываемся
+    private val _observableDataSize = MutableObservable<Int>(_data.size)
+    val observableDataSize: Observable<Int>
+        get() = _observableDataSize
 
     // ---------------------методы репозитория ------------------------------------
     fun addUser(user: String) {
         _data.add(user)
         println("Add user $user")
         // уведомить подписчиков об изменении списка пользователей
-        observableData.data = _data
-        observableDataSize.data = _data.size
+        _observableData.data = _data
+        _observableDataSize.data = _data.size
     }
 
     fun removeUser(user: String) {
         _data.remove(user)
         println("Remove user $user")
         // уведомить подписчиков об изменении списка пользователей
-        observableData.data = _data
-        observableDataSize.data = _data.size
+        _observableData.data = _data
+        _observableDataSize.data = _data.size
     }
 }
