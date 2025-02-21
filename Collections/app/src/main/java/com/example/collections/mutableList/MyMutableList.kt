@@ -4,23 +4,27 @@ interface MyMutableList {
 
     val size: Int
 
-    fun add(element: Int)
-
-    operator fun plus(element: Int)
-
-    fun add(index: Int, element: Int)
-
     operator fun get(index: Int): Int
 
-    fun removeAt(index: Int)
-
-    fun remove(element: Int)
-
-    operator fun minus(element: Int)
+    operator fun set(index: Int, element: Int): Int
 
     fun clear()
 
-    fun contains(element: Int):Boolean
 
-    operator fun set(index: Int, element: Int): Int
+    fun add(element: Int)
+
+    fun add(index: Int, element: Int)
+
+
+    fun remove(element: Int)
+
+    fun removeAt(index: Int)
+
+
+    fun contains(element: Int): Boolean
+
+
+    operator fun plus(element: Int)
+
+    operator fun minus(element: Int)
 }

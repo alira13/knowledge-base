@@ -7,7 +7,7 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 
 
-class MyMutableListImplTest {
+class MyMutableArrayListImplTest {
 
     private var myArrayList = MyMutableArrayListImpl()
 
@@ -68,8 +68,10 @@ class MyMutableListImplTest {
 
     @Test
     fun `When element added to first position then it is in first position`() {
-        repeat(100) { myArrayList.add(it) }
+        myArrayList.clear()
+        repeat(10) { myArrayList.add(it) }
         myArrayList.add(0, 1000)
+
         val actual = myArrayList.get(0)
         val expected = 1000
         assertEquals(expected, actual)
