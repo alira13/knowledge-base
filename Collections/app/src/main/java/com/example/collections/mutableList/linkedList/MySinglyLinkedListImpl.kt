@@ -2,10 +2,10 @@ package com.example.collections.mutableList.linkedList
 
 import com.example.collections.mutableList.MyMutableList
 
-class MyLinkedListImpl : MyMutableList {
+class MySinglyLinkedListImpl : MyMutableList {
 
     fun print() {
-        for (i in 0 until size){
+        for (i in 0 until size) {
             println("current = ${getNode(i).item} current.next = ${getNode(i).next?.item} size = $size")
         }
     }
