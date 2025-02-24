@@ -2,7 +2,7 @@ package com.example.collections.mutableList.linkedList
 
 import com.example.collections.mutableList.MyMutableList
 
-class MyDoublyLinkedListImpl : MyMutableList {
+class MyDoublyLinkedListImpl<T> : MyMutableList<T> {
 
     fun print() {
         for (i in 0 until size) {
@@ -13,13 +13,13 @@ class MyDoublyLinkedListImpl : MyMutableList {
     override var size: Int = 0
         private set
 
-    private var first: DoublyNode? = null
+    private var first: DoublyNode<T>? = null
 
-    private var last: DoublyNode? = null
+    private var last: DoublyNode<T>? = null
 
     override fun get(index: Int) = getNode(index).item
 
-    private fun getNode(index: Int): DoublyNode {
+    private fun getNode(index: Int): DoublyNode<T> {
         checkIndex(index)
         if (index == 0) return first!!
         if (index == size - 1) return last!!
@@ -39,7 +39,7 @@ class MyDoublyLinkedListImpl : MyMutableList {
         }
     }
 
-    override fun set(index: Int, element: Int): Int {
+    override fun set(index: Int, element: T): T {
         checkIndex(index)
         val currentNode = getNode(index)
         currentNode.item = element
@@ -52,7 +52,7 @@ class MyDoublyLinkedListImpl : MyMutableList {
         last = null
     }
 
-    override fun add(element: Int) {
+    override fun add(element: T) {
         val prevLast = last
         last = DoublyNode(element, prev = prevLast, next = null)
 
@@ -65,7 +65,7 @@ class MyDoublyLinkedListImpl : MyMutableList {
         size++
     }
 
-    override fun add(index: Int, element: Int) {
+    override fun add(index: Int, element: T) {
         checkIndexForAdding(index)
 
         if (index == size) {
@@ -89,7 +89,7 @@ class MyDoublyLinkedListImpl : MyMutableList {
         size++
     }
 
-    private fun unlink(node: DoublyNode) {
+    private fun unlink(node: DoublyNode<T>) {
         val before = node.prev
         val after = node.next
         before?.next = after
@@ -103,7 +103,7 @@ class MyDoublyLinkedListImpl : MyMutableList {
         size--
     }
 
-    override fun remove(element: Int) {
+    override fun remove(element: T) {
         var currentNode = first
 
         repeat(size) {
@@ -124,7 +124,7 @@ class MyDoublyLinkedListImpl : MyMutableList {
     }
 
 
-    override fun contains(element: Int): Boolean {
+    override fun contains(element: T): Boolean {
         var currentNode = first
         repeat(size) {
             if (currentNode?.item == element) {
@@ -135,15 +135,15 @@ class MyDoublyLinkedListImpl : MyMutableList {
         return false
     }
 
-    override fun plus(element: Int) {
+    override fun plus(element: T) {
         add(element)
     }
 
-    override fun minus(element: Int) {
+    override fun minus(element: T) {
         remove(element)
     }
 
-    class DoublyNode(var item: Int, var next: DoublyNode? = null, var prev: DoublyNode? = null)
+    class DoublyNode<T>(var item: T, var next: DoublyNode<T>? = null, var prev: DoublyNode<T>? = null)
 
     private fun checkIndex(index: Int) {
         if (index < 0 || index >= size) {

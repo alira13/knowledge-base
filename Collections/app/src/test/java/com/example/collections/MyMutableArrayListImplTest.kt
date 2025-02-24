@@ -9,7 +9,7 @@ import org.junit.Test
 
 class MyMutableArrayListImplTest {
 
-    private var myArrayList = MyMutableArrayListImpl()
+    private var myArrayList = MyMutableArrayListImpl<Int>()
 
     @Test
     fun `initial myArrayList size is 0`() {

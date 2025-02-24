@@ -9,7 +9,7 @@ import org.junit.Test
 
 class MyMutableLinkedListImplTest {
 
-    private var myArrayList = MyDoublyLinkedListImpl()
+    private var myArrayList = MyDoublyLinkedListImpl<Int>()
 
     @Test
     fun `initial myArrayList size is 0`() {

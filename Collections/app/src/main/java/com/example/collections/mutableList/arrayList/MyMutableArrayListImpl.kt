@@ -2,10 +2,10 @@ package com.example.collections.mutableList.arrayList
 
 import com.example.collections.mutableList.MyMutableList
 
-class MyMutableArrayListImpl : MyMutableList {
+class MyMutableArrayListImpl<T> : MyMutableList<T> {
 
     // выделение памяти для массива и заполнения nulls
-    private var staticArray = arrayOfNulls<Int>(INITIAL_CAPACITY)
+    private var elements = arrayOfNulls<Any>(INITIAL_CAPACITY)
 
 
     // текущий реализный размер массива(с непустыми элементами)
@@ -14,27 +14,27 @@ class MyMutableArrayListImpl : MyMutableList {
 
     // добавление элемента в конец
     // O(1)
-    override fun add(element: Int) {
+    override fun add(element: T) {
         growIfNeeded() // не идет в расчет, так как не очень часто проихсодит
-        staticArray[size] = element
+        elements[size] = element
         size++
     }
 
     private fun growIfNeeded() {
-        if (staticArray.size == size) {
-            val newStaticArray = arrayOfNulls<Int>(size * 2)
+        if (elements.size == size) {
+            val newStaticArray = arrayOfNulls<Any>(size * 2)
             /*
             for (index in staticArray.indices) {
                 newStaticArray[index] = staticArray[index]
             }
              */
-            System.arraycopy(staticArray, 0, newStaticArray, 0, size)
-            staticArray = newStaticArray
+            System.arraycopy(elements, 0, newStaticArray, 0, size)
+            elements = newStaticArray
         }
     }
 
     // O(n)
-    override fun add(index: Int, element: Int) {
+    override fun add(index: Int, element: T) {
         checkIndexForAdding(index)
         growIfNeeded()
         // поскольку сам массив всегда больше,
@@ -48,20 +48,21 @@ class MyMutableArrayListImpl : MyMutableList {
         }
          */
 
-        System.arraycopy(staticArray, index, staticArray, index + 1, size - index)
-        staticArray[index] = element
+        System.arraycopy(elements, index, elements, index + 1, size - index)
+        elements[index] = element
         size++
     }
 
-    override fun plus(element: Int) {
+    override fun plus(element: T) {
         add(element)
     }
 
     // получение элемента по интексу
     // O(1)
-    override fun get(index: Int): Int {
+    override fun get(index: Int): T {
         checkIndex(index)
-        return staticArray[index]!!
+
+        return elements[index] as T
     }
 
     // удаление элемента по индексу
@@ -73,36 +74,36 @@ class MyMutableArrayListImpl : MyMutableList {
             staticArray[i] = staticArray[i + 1]
         }
          */
-        System.arraycopy(staticArray, index + 1, staticArray, index, size - index - 1)
+        System.arraycopy(elements, index + 1, elements, index, size - index - 1)
         size--
-        staticArray[size] = null
+        elements[size] = null
     }
 
     // удаление элемента по элементу
     // O(n)
-    override fun remove(element: Int) {
-        for (index in staticArray.indices) {
-            if (staticArray[index] == element) {
+    override fun remove(element: T) {
+        for (index in elements.indices) {
+            if (elements[index] == element) {
                 removeAt(index)
                 return
             }
         }
     }
 
-    override fun minus(element: Int) {
+    override fun minus(element: T) {
         remove(element)
     }
 
     // O(1)
     override fun clear() {
-        staticArray = arrayOfNulls<Int>(INITIAL_CAPACITY)
+        elements = arrayOfNulls<Any>(INITIAL_CAPACITY)
         size = 0
     }
 
     // O(n)
-    override fun contains(element: Int): Boolean {
+    override fun contains(element: T): Boolean {
         for (index in 0 until size) {
-            if (staticArray[index] == element) {
+            if (elements[index] == element) {
                 return true
             }
         }
@@ -110,9 +111,9 @@ class MyMutableArrayListImpl : MyMutableList {
     }
 
     // O(1)
-    override fun set(index: Int, element: Int): Int {
+    override fun set(index: Int, element: T): T {
         checkIndex(index)
-        staticArray[index] = element
+        elements[index] = element
         return element
     }
 

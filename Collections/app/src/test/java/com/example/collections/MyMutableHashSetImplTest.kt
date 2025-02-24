@@ -11,7 +11,7 @@ class MyMutableHashSetImplTest {
 
     @Test
     fun `initial myArrayList size is 0`() {
-        val myHashSet = MyHashSetImpl()
+        val myHashSet = MyHashSetImpl<Int>()
 
         val actual = myHashSet.size
         val expected = 0
@@ -20,7 +20,7 @@ class MyMutableHashSetImplTest {
 
     @Test
     fun `When add 1 elements them size is 1`() {
-        val myHashSet = MyHashSetImpl()
+        val myHashSet = MyHashSetImpl<Int>()
 
         myHashSet.add(0)
         val actual = myHashSet.size
@@ -30,7 +30,7 @@ class MyMutableHashSetImplTest {
 
     @Test
     fun `When add 1 elements then return true`() {
-        val myHashSet = MyHashSetImpl()
+        val myHashSet = MyHashSetImpl<Int>()
 
         val actual = myHashSet.add(0)
         assertTrue(actual)
@@ -38,7 +38,7 @@ class MyMutableHashSetImplTest {
 
     @Test
     fun `When add 1 equals elements then return false`() {
-        val myHashSet = MyHashSetImpl()
+        val myHashSet = MyHashSetImpl<Int>()
         myHashSet.add(0)
         val actual = myHashSet.add(0)
         assertFalse(actual)
@@ -46,7 +46,7 @@ class MyMutableHashSetImplTest {
 
     @Test
     fun `When add 10 elements then size is 10`() {
-        val myHashSet = MyHashSetImpl()
+        val myHashSet = MyHashSetImpl<Int>()
 
         repeat(10) { myHashSet.add(it) }
         val actual = myHashSet.size
@@ -56,7 +56,7 @@ class MyMutableHashSetImplTest {
 
     @Test
     fun `When add 10 equals elements then size is 1`() {
-        val myHashSet = MyHashSetImpl()
+        val myHashSet = MyHashSetImpl<Int>()
 
         repeat(10) { myHashSet.add(2) }
         val actual = myHashSet.size
@@ -66,7 +66,7 @@ class MyMutableHashSetImplTest {
 
     @Test
     fun `When add value 1000 then hashSet contains 1000`() {
-        val myHashSet = MyHashSetImpl()
+        val myHashSet = MyHashSetImpl<Int>()
 
         repeat(10) { myHashSet.add(it) }
         myHashSet.add(1000)
@@ -77,7 +77,7 @@ class MyMutableHashSetImplTest {
 
     @Test
     fun `When dont add value 1000 then hashSet contains 1000`() {
-        val myHashSet = MyHashSetImpl()
+        val myHashSet = MyHashSetImpl<Int>()
         repeat(10) { myHashSet.add(it) }
         val actual = myHashSet.contains(1000)
         assertFalse(actual)
@@ -85,7 +85,7 @@ class MyMutableHashSetImplTest {
 
     @Test
     fun `When add 100 elements and then remove 50 value then size wil be 99`() {
-        val myHashSet = MyHashSetImpl()
+        val myHashSet = MyHashSetImpl<Int>()
 
         repeat(100) { myHashSet.add(it) }
         myHashSet.remove(50)
@@ -96,7 +96,7 @@ class MyMutableHashSetImplTest {
 
     @Test
     fun `When remove 50 value element then hashSet does not contain 50 value`() {
-        val myHashSet = MyHashSetImpl()
+        val myHashSet = MyHashSetImpl<Int>()
         repeat(100) { myHashSet.add(it) }
         myHashSet.remove(50)
         val actual = myHashSet.contains(50)
@@ -105,7 +105,7 @@ class MyMutableHashSetImplTest {
 
     @Test
     fun `When list is cleared then size is 0`() {
-        val myHashSet = MyHashSetImpl()
+        val myHashSet = MyHashSetImpl<Int>()
 
         repeat(100) { myHashSet.add(it) }
         myHashSet.clear()
@@ -116,7 +116,7 @@ class MyMutableHashSetImplTest {
 
     @Test
     fun `When add 100 elements and then contains 50 is true`() {
-        val myHashSet = MyHashSetImpl()
+        val myHashSet = MyHashSetImpl<Int>()
 
         repeat(100) { myHashSet.add(it) }
         myHashSet.contains(50)
@@ -126,7 +126,7 @@ class MyMutableHashSetImplTest {
 
     @Test
     fun `When add 100 elements and then contains 100 is false`() {
-        val myHashSet = MyHashSetImpl()
+        val myHashSet = MyHashSetImpl<Int>()
 
         repeat(100) { myHashSet.add(it) }
         val actual = myHashSet.contains(100)

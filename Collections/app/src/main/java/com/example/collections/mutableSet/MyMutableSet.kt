@@ -1,14 +1,14 @@
 package com.example.collections.mutableSet
 
-interface MyMutableSet {
+interface MyMutableSet<T> {
     val size: Int
 
     fun clear()
 
     //Если успешно добавлено
-    fun add(element: Int):Boolean
+    fun add(element: T): Boolean
 
-    fun remove(element: Int)
+    fun remove(element: T)
 
-    fun contains(element: Int): Boolean
+    fun contains(element: T): Boolean
 }

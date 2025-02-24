@@ -2,28 +2,28 @@ package com.example.collections.mutableSet
 
 import kotlin.math.abs
 
-class MyHashSetImpl : MyMutableSet {
+class MyHashSetImpl<T> : MyMutableSet<T> {
 
     // массив размером INITIAL_CAPACITY
-    var elements = arrayOfNulls<Node>(INITIAL_CAPACITY)
+    var elements = arrayOfNulls<Node<T>>(INITIAL_CAPACITY)
 
     // количество элементо в массиве
     override var size: Int = 0
         private set
 
     // метод для расчета позиции
-    private fun getElementPosition(element: Node, size: Int): Int {
+    private fun <T> getElementPosition(element: Node<T>, size: Int): Int {
         // значение массива может быть отрицательным, и тогда позиция будет отрицательна
-        return (abs(element.item)) % size
+        return abs(element.hashCode() % size)
     }
 
     override fun clear() {
         size = 0
-        elements = arrayOfNulls<Node>(INITIAL_CAPACITY)
+        elements = arrayOfNulls(INITIAL_CAPACITY)
     }
 
     // Метод добавления элемента в массив
-    override fun add(element: Int): Boolean {
+    override fun add(element: T): Boolean {
         // условие расширения размера массива
         if (size >= elements.size * LOAD_FACTOR) {
             increaseSize()
@@ -38,9 +38,9 @@ class MyHashSetImpl : MyMutableSet {
     }
 
     // вспомогательный метод для добавления элемента в произвольный массив
-    private fun add(element: Int, array: Array<Node?>): Boolean {
+    private fun <T> add(element: T, array: Array<Node<T>?>): Boolean {
         // создаем элемент и получаем его позицию на основе размера массива, в который мы хотим его добавить
-        val newElement = Node(element)
+        val newElement = Node<T>(element)
         val position = getElementPosition(newElement, array.size)
 
         // читаем по этой позиции данные
@@ -75,7 +75,7 @@ class MyHashSetImpl : MyMutableSet {
     // метод увеличения размера массива
     private fun increaseSize() {
         // создаем массив, в 2 раза больше существующего
-        val newArray = arrayOfNulls<Node>(elements.size * 2)
+        val newArray = arrayOfNulls<Node<T>>(elements.size * 2)
         // нужно у всех существующих элементов пересчитать позицию(тк она зависит от size, который изменился)
         for (node in elements) {
             var currentElement = node
@@ -90,7 +90,7 @@ class MyHashSetImpl : MyMutableSet {
         elements = newArray
     }
 
-    override fun remove(element: Int) {
+    override fun remove(element: T) {
         val position = getElementPosition(Node(element), elements.size)
         val existedElement = elements[position] ?: return
 
@@ -100,11 +100,11 @@ class MyHashSetImpl : MyMutableSet {
             return
         }
 
-        var before: Node? = existedElement
+        var before: Node<T>? = existedElement
         while (before?.next != null) {
-            val removevingElement = before.next
-            if (removevingElement?.item == element) {
-                before.next = removevingElement.next
+            val removingElement = before.next
+            if (removingElement?.item == element) {
+                before.next = removingElement?.next
                 size--
             } else {
                 before = before.next
@@ -113,8 +113,8 @@ class MyHashSetImpl : MyMutableSet {
 
     }
 
-    override fun contains(element: Int): Boolean {
-        val position = getElementPosition(Node(element), elements.size)
+    override fun contains(element: T): Boolean {
+        val position = getElementPosition(Node<T>(element), elements.size)
         var existedItem = elements[position]
 
         while (existedItem != null) {
@@ -132,14 +132,14 @@ class MyHashSetImpl : MyMutableSet {
         const val LOAD_FACTOR = 0.75
     }
 
-    data class Node(
-        val item: Int,
-        var next: Node? = null
+    data class Node<T>(
+        val item: T,
+        var next: Node<T>? = null
     )
 }
 
 fun main() {
-    val hashSet = MyHashSetImpl()
+    val hashSet = MyHashSetImpl<Int>()
     repeat(100) {
         hashSet.add(it)
     }

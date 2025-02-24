@@ -2,7 +2,7 @@ package com.example.collections.mutableList.linkedList
 
 import com.example.collections.mutableList.MyMutableList
 
-class MySinglyLinkedListImpl : MyMutableList {
+class MySinglyLinkedListImpl<T> : MyMutableList<T> {
 
     fun print() {
         for (i in 0 until size) {
@@ -13,13 +13,13 @@ class MySinglyLinkedListImpl : MyMutableList {
     override var size: Int = 0
         private set
 
-    private var first: Node? = null
+    private var first: Node<T>? = null
 
-    private var last: Node? = null
+    private var last: Node<T>? = null
 
     override fun get(index: Int) = getNode(index).item
 
-    private fun getNode(index: Int): Node {
+    private fun getNode(index: Int): Node<T> {
         checkIndex(index)
         if (index == 0) return first!!
         if (index == size - 1) return last!!
@@ -32,7 +32,7 @@ class MySinglyLinkedListImpl : MyMutableList {
         return current!!
     }
 
-    override fun set(index: Int, element: Int): Int {
+    override fun set(index: Int, element: T): T {
         checkIndex(index)
         val currentNode = getNode(index)
         currentNode.item = element
@@ -45,7 +45,7 @@ class MySinglyLinkedListImpl : MyMutableList {
         last = null
     }
 
-    override fun add(element: Int) {
+    override fun add(element: T) {
         if (size == 0) {
             val newElement = Node(element)
             first = newElement
@@ -59,7 +59,7 @@ class MySinglyLinkedListImpl : MyMutableList {
         size++
     }
 
-    override fun add(index: Int, element: Int) {
+    override fun add(index: Int, element: T) {
 
         checkIndexForAdding(index)
         if (index == size) {
@@ -84,7 +84,7 @@ class MySinglyLinkedListImpl : MyMutableList {
     }
 
 
-    override fun remove(element: Int) {
+    override fun remove(element: T) {
         if (first?.item == element) {
             removeAt(0)
             return
@@ -93,7 +93,7 @@ class MySinglyLinkedListImpl : MyMutableList {
         repeat(size) {
             val currentNode = before?.next
             if (currentNode?.item == element) {
-                val after = currentNode.next
+                val after = currentNode?.next
                 before?.next = after
                 if (after == null) {
                     last = before
@@ -126,7 +126,7 @@ class MySinglyLinkedListImpl : MyMutableList {
     }
 
 
-    override fun contains(element: Int): Boolean {
+    override fun contains(element: T): Boolean {
         var currentNode = first
         repeat(size) {
             if (currentNode?.item == element) {
@@ -137,15 +137,15 @@ class MySinglyLinkedListImpl : MyMutableList {
         return false
     }
 
-    override fun plus(element: Int) {
+    override fun plus(element: T) {
         add(element)
     }
 
-    override fun minus(element: Int) {
+    override fun minus(element: T) {
         remove(element)
     }
 
-    class Node(var item: Int, var next: Node? = null)
+    class Node<T>(var item: T, var next: Node<T>? = null)
 
     private fun checkIndex(index: Int) {
         if (index < 0 || index >= size) {
