@@ -1,6 +1,6 @@
-package com.example.collections.mutableList.arrayList
+package com.example.collections.mutableCollection.mutableList.arrayList
 
-import com.example.collections.mutableList.MyMutableList
+import com.example.collections.mutableCollection.mutableList.MyMutableList
 
 class MyMutableArrayListImpl<T> : MyMutableList<T> {
 
@@ -14,10 +14,13 @@ class MyMutableArrayListImpl<T> : MyMutableList<T> {
 
     // добавление элемента в конец
     // O(1)
-    override fun add(element: T) {
+    // чтобы можно было использовать один интерфейс с hashSet,
+    // добавляем возврашаемый тип. Мы всегда можем добавить в массив поэтому true, а у hashSet уже будет варьироваться
+    override fun add(element: T): Boolean {
         growIfNeeded() // не идет в расчет, так как не очень часто проихсодит
         elements[size] = element
         size++
+        return true
     }
 
     private fun growIfNeeded() {

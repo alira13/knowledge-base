@@ -1,4 +1,4 @@
-package com.example.collections.mutableSet
+package com.example.collections.mutableCollection.mutableSet
 
 import kotlin.math.abs
 

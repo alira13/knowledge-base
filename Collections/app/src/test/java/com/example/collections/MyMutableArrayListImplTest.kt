@@ -1,6 +1,6 @@
 package com.example.collections
 
-import com.example.collections.mutableList.arrayList.MyMutableArrayListImpl
+import com.example.collections.mutableCollection.mutableList.arrayList.MyMutableArrayListImpl
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue

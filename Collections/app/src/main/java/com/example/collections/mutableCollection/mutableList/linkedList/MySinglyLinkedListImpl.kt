@@ -1,6 +1,6 @@
-package com.example.collections.mutableList.linkedList
+package com.example.collections.mutableCollection.mutableList.linkedList
 
-import com.example.collections.mutableList.MyMutableList
+import com.example.collections.mutableCollection.mutableList.MyMutableList
 
 class MySinglyLinkedListImpl<T> : MyMutableList<T> {
 
@@ -45,18 +45,19 @@ class MySinglyLinkedListImpl<T> : MyMutableList<T> {
         last = null
     }
 
-    override fun add(element: T) {
+    override fun add(element: T):Boolean {
         if (size == 0) {
             val newElement = Node(element)
             first = newElement
             last = newElement
             size++
-            return
+            return true
         }
         val newElement = Node(element)
         last?.next = newElement
         last = newElement
         size++
+        return true
     }
 
     override fun add(index: Int, element: T) {

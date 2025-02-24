@@ -1,6 +1,6 @@
 package com.example.collections
 
-import com.example.collections.mutableSet.MyHashSetImpl
+import com.example.collections.mutableCollection.mutableSet.MyHashSetImpl
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue

@@ -1,6 +1,6 @@
 package com.example.collections
 
-import com.example.collections.mutableList.linkedList.MyDoublyLinkedListImpl
+import com.example.collections.mutableCollection.mutableList.linkedList.MyDoublyLinkedListImpl
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue

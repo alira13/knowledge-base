@@ -1,6 +1,6 @@
-package com.example.collections.mutableList.linkedList
+package com.example.collections.mutableCollection.mutableList.linkedList
 
-import com.example.collections.mutableList.MyMutableList
+import com.example.collections.mutableCollection.mutableList.MyMutableList
 
 class MyDoublyLinkedListImpl<T> : MyMutableList<T> {
 
@@ -52,7 +52,7 @@ class MyDoublyLinkedListImpl<T> : MyMutableList<T> {
         last = null
     }
 
-    override fun add(element: T) {
+    override fun add(element: T): Boolean {
         val prevLast = last
         last = DoublyNode(element, prev = prevLast, next = null)
 
@@ -63,6 +63,7 @@ class MyDoublyLinkedListImpl<T> : MyMutableList<T> {
         }
 
         size++
+        return true
     }
 
     override fun add(index: Int, element: T) {
@@ -143,7 +144,11 @@ class MyDoublyLinkedListImpl<T> : MyMutableList<T> {
         remove(element)
     }
 
-    class DoublyNode<T>(var item: T, var next: DoublyNode<T>? = null, var prev: DoublyNode<T>? = null)
+    class DoublyNode<T>(
+        var item: T,
+        var next: DoublyNode<T>? = null,
+        var prev: DoublyNode<T>? = null
+    )
 
     private fun checkIndex(index: Int) {
         if (index < 0 || index >= size) {
