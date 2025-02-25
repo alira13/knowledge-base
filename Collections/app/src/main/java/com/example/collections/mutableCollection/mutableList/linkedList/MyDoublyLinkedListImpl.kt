@@ -2,7 +2,7 @@ package com.example.collections.mutableCollection.mutableList.linkedList
 
 import com.example.collections.mutableCollection.mutableList.MyMutableList
 
-class MyDoublyLinkedListImpl<T> : MyMutableList<T> {
+class MyDoublyLinkedListImpl<T> : MyMutableList<T>, Iterable<T> {
 
     fun print() {
         for (i in 0 until size) {
@@ -161,4 +161,72 @@ class MyDoublyLinkedListImpl<T> : MyMutableList<T> {
             throw IndexOutOfBoundsException("Index: $index Size:$size")
         }
     }
+
+    override fun iterator(): ListIterator<T> {
+        var currentNode = first
+        var lastReturned: DoublyNode<T>? = null
+        var index = 0
+
+        return object : ListIterator<T> {
+            override fun hasNext(): Boolean {
+                return currentNode != null
+            }
+
+            override fun hasPrevious(): Boolean {
+                return lastReturned != null
+            }
+
+            override fun next(): T {
+                val value = currentNode!!.item
+
+                lastReturned = currentNode
+                currentNode = currentNode!!.next
+
+                index++
+                return value
+            }
+
+            override fun nextIndex(): Int {
+                return index
+            }
+
+            override fun previous(): T {
+                currentNode = lastReturned
+                val value = currentNode!!.item
+
+                lastReturned = currentNode!!.prev
+
+                index--
+                return value
+            }
+
+            override fun previousIndex(): Int {
+                return (index - 1)
+            }
+        }
+    }
+}
+
+
+fun main() {
+    val list = MyDoublyLinkedListImpl<String>()
+    list.add("A")
+    list.add("B")
+    list.add("C")
+    list.add("D")
+
+    val iterator = list.iterator()
+
+    println("Forward:")
+    while (iterator.hasNext()) {
+        println(iterator.next()) // A, B, C, D
+    }
+
+    println("Back:")
+    while (iterator.hasPrevious()) {
+        println(iterator.previous()) // D, C, B, A
+    }
+
+    println("For:")
+    list.forEach(::println)
 }

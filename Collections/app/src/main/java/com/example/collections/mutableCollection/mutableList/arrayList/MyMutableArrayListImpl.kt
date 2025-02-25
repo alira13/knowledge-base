@@ -2,7 +2,7 @@ package com.example.collections.mutableCollection.mutableList.arrayList
 
 import com.example.collections.mutableCollection.mutableList.MyMutableList
 
-class MyMutableArrayListImpl<T> : MyMutableList<T> {
+class MyMutableArrayListImpl<T> : MyMutableList<T>, Iterable<T> {
 
     // выделение памяти для массива и заполнения nulls
     private var elements = arrayOfNulls<Any>(INITIAL_CAPACITY)
@@ -135,5 +135,20 @@ class MyMutableArrayListImpl<T> : MyMutableList<T> {
     companion object {
         // начальная емкость массива
         private const val INITIAL_CAPACITY = 10
+    }
+
+    override fun iterator(): Iterator<T> {
+        return object : Iterator<T> {
+
+            var nextIndex = 0
+
+            override fun hasNext(): Boolean {
+                return nextIndex < size
+            }
+
+            override fun next(): T {
+                return elements[nextIndex++] as T
+            }
+        }
     }
 }

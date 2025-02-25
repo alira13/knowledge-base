@@ -2,7 +2,7 @@ package com.example.collections.mutableCollection.mutableList.linkedList
 
 import com.example.collections.mutableCollection.mutableList.MyMutableList
 
-class MySinglyLinkedListImpl<T> : MyMutableList<T> {
+class MySinglyLinkedListImpl<T> : MyMutableList<T>, Iterable<T> {
 
     fun print() {
         for (i in 0 until size) {
@@ -45,7 +45,7 @@ class MySinglyLinkedListImpl<T> : MyMutableList<T> {
         last = null
     }
 
-    override fun add(element: T):Boolean {
+    override fun add(element: T): Boolean {
         if (size == 0) {
             val newElement = Node(element)
             first = newElement
@@ -157,6 +157,23 @@ class MySinglyLinkedListImpl<T> : MyMutableList<T> {
     private fun checkIndexForAdding(index: Int) {
         if (index < 0 || index > size) {
             throw IndexOutOfBoundsException("Index: $index Size:$size")
+        }
+    }
+
+    override fun iterator(): Iterator<T> {
+
+        var nextNode = first
+
+        return object : Iterator<T> {
+            override fun hasNext(): Boolean {
+                return nextNode != null
+            }
+
+            override fun next(): T{
+                val item = nextNode?.item
+                nextNode = nextNode?.next
+                return item!!
+            }
         }
     }
 }
