@@ -1,9 +1,9 @@
 package com.example.designpatterns.singleton.safeDoubleCheck
 
-
 import com.example.designpatterns.singleton.nonSafe.Person
 import kotlinx.serialization.json.Json
 import java.io.File
+
 
 class SafeDoubleCheckRepository private constructor() {
 
@@ -57,7 +57,8 @@ class SafeDoubleCheckRepository private constructor() {
                     }
                     // тут точно ==null, иначе бы предыдущий return сработал
                     // значит нам надо создать объект и его присвоить instance. И also вернет instance
-                    return SafeDoubleCheckRepository().also { instance = it }
+                    return SafeDoubleCheckRepository()
+                        .also { instance = it }
                 }
             } else throw Exception("Invalid passward $password")
         }

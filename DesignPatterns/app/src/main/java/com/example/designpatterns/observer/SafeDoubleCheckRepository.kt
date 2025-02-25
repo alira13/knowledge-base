@@ -1,4 +1,4 @@
-package com.example.designpatterns.singleton.safeDoubleCheck
+package com.example.designpatterns.observer
 
 
 import com.example.designpatterns.singleton.nonSafe.Person
