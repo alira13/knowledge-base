@@ -2,7 +2,7 @@ package com.example.collections.mutableCollection.mutableSet
 
 import kotlin.math.abs
 
-class MyHashSetImpl<T> : MyMutableSet<T> {
+class MyHashSetImpl<T> : MyMutableSet<T>, Iterable<T> {
 
     // массив размером INITIAL_CAPACITY
     var elements = arrayOfNulls<Node<T>>(INITIAL_CAPACITY)
@@ -136,6 +136,35 @@ class MyHashSetImpl<T> : MyMutableSet<T> {
         val item: T,
         var next: Node<T>? = null
     )
+
+    override fun iterator(): Iterator<T> {
+        // индекс массива ячейки, с которой мы работаем
+        var nodeIndex = 0
+        // следующий элемент
+        var nextNode = elements[nodeIndex]
+        // количество элементов, которые уже перебрали
+        var nextIndex = 0
+
+        return object : Iterator<T> {
+            // если количество элементов, которые уже перебрали, меньше всех не null объектов массива
+            override fun hasNext(): Boolean {
+                return nextIndex < size
+            }
+
+            // ищем не null-ячейку последовательно идя по ячейкам,
+            // как только нашли  ячейку, выводим ее значение
+            // переходим по цепочке next пока next!=null
+            override fun next(): T {
+                while (nextNode == null) {
+                    nextNode = elements[++nodeIndex]
+                }
+                return nextNode?.item!!.also {
+                    nextIndex++
+                    nextNode = nextNode?.next
+                }
+            }
+        }
+    }
 }
 
 fun main() {
