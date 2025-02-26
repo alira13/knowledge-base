@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_margin="16dp"
     android:orientation="vertical"
-    tools:context=".callback.CallbackMainActivity">
+    tools:context=".coroutines.CoroutinesMainActivity">
 
     <TextView
         android:id="@+id/tv_content"
