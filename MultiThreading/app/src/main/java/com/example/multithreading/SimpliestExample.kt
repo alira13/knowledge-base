@@ -2,7 +2,6 @@ package com.example.multithreading
 
 import java.lang.Thread.sleep
 import kotlin.concurrent.thread
-import kotlin.random.Random.Default.nextInt
 
 fun main() {
     thread {
@@ -16,8 +15,4 @@ fun main() {
         println("-")
         sleep(2000)
     }
-
-
 }
-
-
