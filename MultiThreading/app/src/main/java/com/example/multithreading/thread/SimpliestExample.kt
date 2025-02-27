@@ -1,4 +1,4 @@
-package com.example.multithreading
+package com.example.multithreading.thread
 
 import java.lang.Thread.sleep
 import kotlin.concurrent.thread

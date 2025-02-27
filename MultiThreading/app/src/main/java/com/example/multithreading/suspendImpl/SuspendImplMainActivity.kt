@@ -1,4 +1,4 @@
-package com.example.multithreading.callback
+package com.example.multithreading.suspendImpl
 
 import android.os.Bundle
 import android.widget.Button
@@ -12,7 +12,7 @@ import com.example.multithreading.entities.Author
 import com.example.multithreading.entities.Book
 import kotlin.concurrent.thread
 
-class CallbackMainActivity : AppCompatActivity() {
+class SuspendImplMainActivity : AppCompatActivity() {
 
     private lateinit var loadBtn: Button
     private lateinit var contentTv: TextView
@@ -36,22 +36,40 @@ class CallbackMainActivity : AppCompatActivity() {
 
         // callback hell
         loadBtn.setOnClickListener {
-            loadBtn.isEnabled = false
-            // callback 1
-            loadBook { book ->
-                contentTv.append("Loading book...\n\n")
-                contentTv.append(book.toString() + "\n\n")
+            loadData()
+        }
+    }
 
+    // сколько раз нужно выйти из loadData и вернуться снова? Точки останова по сути
+    private fun loadData(state: Int = 0, data: Any? = null) {
+        when (state) {
+            0 -> {
+                // выполняем действия последовательно
+                // старт
+                loadBtn.isEnabled = false
+                contentTv.append("Loading book...\n\n")
+                // запускаем метод и выходим из него, а когда он закончит выполнение, стартуем следующий шаг
+                loadBook { book: Book -> loadData(1, book) }
+                // отпустили выполнение
+            }
+
+            1 -> {
+                // старт
+                val book = data as Book
+                contentTv.append(book.toString() + "\n\n")
                 contentTv.append("Loading author...\n\n")
-                // callback 2
-                loadAuthor { author: Author ->
-                    contentTv.append(author.toString() + "\n\n")
-                    contentTv.append("Finish loading...\n\n")
-                    // Нам нужно запустить в том же потоке, что и изменил первоначальное значение
-                    // это был Main(Ui-thread), поэтому мы и запускаем внутри него
-                    runOnUiThread {
-                        loadBtn.isEnabled = true
-                    }
+                // it
+                loadAuthor { author: Author -> loadData(2, author) }
+                // отпустили выполнение
+            }
+
+            2 -> {
+                // старт
+                val author = data as Author
+                contentTv.append(author.toString() + "\n\n")
+                contentTv.append("Finish loading...\n\n")
+                runOnUiThread {
+                    loadBtn.isEnabled = true
                 }
             }
         }
@@ -76,6 +94,8 @@ class CallbackMainActivity : AppCompatActivity() {
     // долгие операции выносят в отельный поток
     // если нужно чтобы операция вернула даные по завершению, используют механизм callback
     // вызов функции происходит не сразу,а в будущем после окончания метода sleep
+
+    // как только загрузится книжка, выполни какую-то фунцию с именем callback с аргументами
     private fun loadBook(callback: (Book) -> Unit) {
         thread {
             Thread.sleep(3000)
