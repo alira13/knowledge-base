@@ -3,8 +3,8 @@ package com.example.multithreading.exceptionHandler
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.asCoroutineDispatcher
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.async
+import kotlinx.coroutines.delay
 import java.util.concurrent.Executors
 
 fun main() {
@@ -25,7 +25,7 @@ fun main() {
     //obj.asyncAwaitWithHandler()
 }
 
-class AsyncWithExceptionExample() {
+class AsyncWithExceptionExample {
     private val dispatcher = Executors.newCachedThreadPool().asCoroutineDispatcher()
 
     private val rootParentExceptionHandler =

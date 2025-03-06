@@ -15,7 +15,7 @@ fun main() {
     // как все основные потоки завершатся,
     // сам дальше не продолжит работу
     thread(isDaemon = true) {
-        while(true) {
+        while (true) {
             println("I am daemon")
             sleep(1000)
         }

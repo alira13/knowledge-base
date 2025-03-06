@@ -105,13 +105,13 @@ fun runAndShowParentWithAnotherContext() {
 
     //  а вот тут мы уже поменяли контекст и будет другая job родительская
     scopeWithoutDaemon.launch {
-        coroutineContext.let{
+        coroutineContext.let {
             println(it)
         }
-        withContext(Dispatchers.Default){
+        withContext(Dispatchers.Default) {
             //coroutineContext.job.parent.let { println(it) }
 
-            coroutineContext.let{
+            coroutineContext.let {
                 println(it)
             }
 

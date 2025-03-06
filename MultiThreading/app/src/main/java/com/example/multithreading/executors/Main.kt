@@ -1,7 +1,6 @@
 package com.example.multithreading.executors
 
 import java.util.concurrent.Executors
-import java.util.concurrent.RunnableFuture
 import kotlin.concurrent.thread
 
 fun main() {
@@ -11,7 +10,7 @@ fun main() {
 
 data class Image(val id: Int)
 
-private fun runWithThread(){
+private fun runWithThread() {
     repeat(10_000) {
         // 1 проблема создание thread занимает немало времени и оперативной операции
         // когда потоков много, может случиться ex OutOfMemError
@@ -26,7 +25,7 @@ private fun runWithThread(){
     }
 }
 
-private fun runWithExecutor(){
+private fun runWithExecutor() {
     // создаем количество потоков по количеству ядер
     // для сложных вычислений
     val executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors())
@@ -36,6 +35,7 @@ private fun runWithExecutor(){
         }
     }
 }
+
 private fun workWithImage(image: Image) {
     println("Working with $image")
     Thread.sleep(1000)

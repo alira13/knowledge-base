@@ -21,7 +21,7 @@ fun main() {
     obj.launchTryCatchWithHandler()
 }
 
-class LaunchWithExceptionExample() {
+class LaunchWithExceptionExample {
     private val dispatcher = Executors.newCachedThreadPool().asCoroutineDispatcher()
 
     private val rootParentExceptionHandler =

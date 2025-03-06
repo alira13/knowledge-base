@@ -3,7 +3,6 @@ package com.example.multithreading.exceptionHandler
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.asCoroutineDispatcher
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.concurrent.Executors
@@ -17,7 +16,7 @@ fun main() {
     obj.launchWithHandler()
 }
 
-class ChildExceptionExample() {
+class ChildExceptionExample {
     private val dispatcher = Executors.newCachedThreadPool().asCoroutineDispatcher()
 
     private val rootParentExceptionHandler =
@@ -71,7 +70,7 @@ class ChildExceptionExample() {
             println("Do smth in someTask")
         }
     }
-    
+
     private fun launchTaskWithChildWithException(scope: CoroutineScope) {
         scope.launch(parentExceptionHandler) {
             println("Do smth in taskWithException")
