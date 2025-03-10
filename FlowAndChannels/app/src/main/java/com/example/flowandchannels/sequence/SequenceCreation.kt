@@ -1,4 +1,4 @@
-package com.example.flowandchannels
+package com.example.flowandchannels.sequence
 
 import kotlin.random.Random
 

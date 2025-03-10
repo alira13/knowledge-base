@@ -1,4 +1,4 @@
-package com.example.flowandchannels
+package com.example.flowandchannels.sequence
 
 private fun main() {
     val list = mutableListOf<Int>().apply {
