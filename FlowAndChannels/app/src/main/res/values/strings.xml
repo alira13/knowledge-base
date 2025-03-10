@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">FlowAndChannels</string>
+    <string name="lbl_enter_word">Enter word:</string>
+    <string name="btn_search">Search</string>
 </resources>
