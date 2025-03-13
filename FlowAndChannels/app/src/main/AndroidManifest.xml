@@ -19,6 +19,9 @@
             android:exported="true" />
         <activity
             android:name=".stateAsFlow.MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".finalFlowExample.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
