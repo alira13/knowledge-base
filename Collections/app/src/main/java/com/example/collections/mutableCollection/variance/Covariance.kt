@@ -1,4 +1,4 @@
-package com.example.collections.mutableCollection.variant
+package com.example.collections.mutableCollection.variance
 
 import com.example.collections.mutableCollection.myCollection.MyList
 import com.example.collections.mutableCollection.myCollection.myListOf
@@ -44,3 +44,5 @@ open class Worker(val name: String)
 // Programmer - исходный тип
 // MyList<Worker> - производный тип от Worker
 class Programmer(name: String) : Worker(name)
+
+class Director(name: String) : Worker(name)
