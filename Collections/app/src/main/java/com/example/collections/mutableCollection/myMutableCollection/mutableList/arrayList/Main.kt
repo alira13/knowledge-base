@@ -1,4 +1,4 @@
-package com.example.collections.mutableCollection.mutableList.arrayList
+package com.example.collections.mutableCollection.myMutableCollection.mutableList.arrayList
 
 import kotlin.time.measureTime
 

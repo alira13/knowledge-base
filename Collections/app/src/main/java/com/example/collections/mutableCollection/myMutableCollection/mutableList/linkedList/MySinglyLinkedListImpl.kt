@@ -1,6 +1,6 @@
-package com.example.collections.mutableCollection.mutableList.linkedList
+package com.example.collections.mutableCollection.myMutableCollection.mutableList.linkedList
 
-import com.example.collections.mutableCollection.mutableList.MyMutableList
+import com.example.collections.mutableCollection.myMutableCollection.mutableList.MyMutableList
 
 class MySinglyLinkedListImpl<T> : MyMutableList<T>, Iterable<T> {
 
@@ -160,19 +160,23 @@ class MySinglyLinkedListImpl<T> : MyMutableList<T>, Iterable<T> {
         }
     }
 
-    override fun iterator(): Iterator<T> {
+    override fun iterator(): MutableIterator<T> {
 
         var nextNode = first
 
-        return object : Iterator<T> {
+        return object : MutableIterator<T> {
             override fun hasNext(): Boolean {
                 return nextNode != null
             }
 
-            override fun next(): T{
+            override fun next(): T {
                 val item = nextNode?.item
                 nextNode = nextNode?.next
                 return item!!
+            }
+
+            override fun remove() {
+                TODO("Not yet implemented")
             }
         }
     }

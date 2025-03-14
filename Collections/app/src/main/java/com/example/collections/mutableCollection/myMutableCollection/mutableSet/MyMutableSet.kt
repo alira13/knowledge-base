@@ -1,8 +1,8 @@
-package com.example.collections.mutableCollection.mutableSet
+package com.example.collections.mutableCollection.myMutableCollection.mutableSet
 
-import com.example.collections.mutableCollection.MyMutableCollection
+import com.example.collections.mutableCollection.myMutableCollection.MyMutableCollection
 
-interface MyMutableSet<T>:MyMutableCollection<T> {
+interface MyMutableSet<T> : MyMutableCollection<T> {
     override val size: Int
 
     override fun clear()

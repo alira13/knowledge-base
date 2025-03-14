@@ -1,6 +1,6 @@
-package com.example.collections.mutableCollection.mutableList.linkedList
+package com.example.collections.mutableCollection.myMutableCollection.mutableList.linkedList
 
-import com.example.collections.mutableCollection.mutableList.MyMutableList
+import com.example.collections.mutableCollection.myMutableCollection.mutableList.MyMutableList
 
 class MyDoublyLinkedListImpl<T> : MyMutableList<T>, Iterable<T> {
 

@@ -1,6 +1,6 @@
-package com.example.collections.mutableCollection.mutableList.arrayList
+package com.example.collections.mutableCollection.myMutableCollection.mutableList.arrayList
 
-import com.example.collections.mutableCollection.mutableList.MyMutableList
+import com.example.collections.mutableCollection.myMutableCollection.mutableList.MyMutableList
 
 class MyMutableArrayListImpl<T> : MyMutableList<T>, Iterable<T> {
 
@@ -137,8 +137,8 @@ class MyMutableArrayListImpl<T> : MyMutableList<T>, Iterable<T> {
         private const val INITIAL_CAPACITY = 10
     }
 
-    override fun iterator(): Iterator<T> {
-        return object : Iterator<T> {
+    override fun iterator(): MutableIterator<T> {
+        return object : MutableIterator<T> {
 
             var nextIndex = 0
 
@@ -148,6 +148,10 @@ class MyMutableArrayListImpl<T> : MyMutableList<T>, Iterable<T> {
 
             override fun next(): T {
                 return elements[nextIndex++] as T
+            }
+
+            override fun remove() {
+                TODO("Not yet implemented")
             }
         }
     }

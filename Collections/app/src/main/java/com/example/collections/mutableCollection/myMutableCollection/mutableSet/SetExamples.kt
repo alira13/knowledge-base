@@ -1,4 +1,4 @@
-package com.example.collections.mutableCollection.mutableSet
+package com.example.collections.mutableCollection.myMutableCollection.mutableSet
 
 fun main() {
     //printHashSet()

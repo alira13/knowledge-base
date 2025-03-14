@@ -1,20 +1,18 @@
 package com.example.collections
 
-import com.example.collections.mutableCollection.mutableList.linkedList.MyDoublyLinkedListImpl
+import com.example.collections.mutableCollection.myMutableCollection.mutableList.arrayList.MyMutableArrayListImpl
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
 
-class MyMutableLinkedListImplTest {
+class MyMutableArrayListImplMain {
 
-    private var myArrayList = MyDoublyLinkedListImpl<Int>()
+    private var myArrayList = MyMutableArrayListImpl<Int>()
 
     @Test
     fun `initial myArrayList size is 0`() {
-        myArrayList.clear()
-
         val actual = myArrayList.size
         val expected = 0
         assertEquals(expected, actual)
@@ -22,8 +20,6 @@ class MyMutableLinkedListImplTest {
 
     @Test
     fun `When add 1 elements them size is 1`() {
-        myArrayList.clear()
-
         myArrayList.add(0)
         val actual = myArrayList.size
         val expected = 1
@@ -32,8 +28,6 @@ class MyMutableLinkedListImplTest {
 
     @Test
     fun `When add 10 elements them size is 10`() {
-        myArrayList.clear()
-
         repeat(10) { myArrayList.add(it) }
         val actual = myArrayList.size
         val expected = 10
@@ -42,8 +36,6 @@ class MyMutableLinkedListImplTest {
 
     @Test
     fun `When add 10 elements and get 5th result is 5`() {
-        myArrayList.clear()
-
         repeat(10) { myArrayList.add(it) }
         val actual = myArrayList.get(5)
         val expected = 5
@@ -52,8 +44,6 @@ class MyMutableLinkedListImplTest {
 
     @Test
     fun `When add 100 elements them size is 100`() {
-        myArrayList.clear()
-
         repeat(100) { myArrayList.add(it) }
         val actual = myArrayList.size
         val expected = 100
@@ -62,8 +52,6 @@ class MyMutableLinkedListImplTest {
 
     @Test
     fun `When add 100 elements and get 50th result is 50`() {
-        myArrayList.clear()
-
         repeat(100) { myArrayList.add(it) }
         val actual = myArrayList.get(50)
         val expected = 50
@@ -72,8 +60,6 @@ class MyMutableLinkedListImplTest {
 
     @Test
     fun `When add 100 elements and get 50th element with indexing operator result is 50`() {
-        myArrayList.clear()
-
         repeat(100) { myArrayList.add(it) }
         val actual = myArrayList[50]
         val expected = 50
@@ -82,8 +68,6 @@ class MyMutableLinkedListImplTest {
 
     @Test
     fun `When element added to first position then it is in first position`() {
-        myArrayList.clear()
-
         myArrayList.clear()
         repeat(10) { myArrayList.add(it) }
         myArrayList.add(0, 1000)
@@ -95,8 +79,6 @@ class MyMutableLinkedListImplTest {
 
     @Test
     fun `When element added to last position then it is in last position`() {
-        myArrayList.clear()
-
         repeat(100) { myArrayList.add(it) }
         myArrayList.add(100, 1000)
         val actual = myArrayList.get(100)
@@ -106,8 +88,6 @@ class MyMutableLinkedListImplTest {
 
     @Test
     fun `When add 100 elements and Then remove 50th element then size wil be 99`() {
-        myArrayList.clear()
-
         repeat(100) { myArrayList.add(it) }
         myArrayList.removeAt(50)
         val actual = myArrayList.size
@@ -117,8 +97,6 @@ class MyMutableLinkedListImplTest {
 
     @Test
     fun `When remove 50th element Then 50th value will be 51`() {
-        myArrayList.clear()
-
         repeat(100) { myArrayList.add(it) }
         myArrayList.removeAt(50)
         val actual = myArrayList.get(50)
@@ -128,8 +106,6 @@ class MyMutableLinkedListImplTest {
 
     @Test
     fun `When remove element with value 50 Then 50th value will be 51`() {
-        myArrayList.clear()
-
         repeat(100) { myArrayList.add(it) }
         myArrayList.remove(50)
         val actual = myArrayList.get(50)
@@ -139,8 +115,6 @@ class MyMutableLinkedListImplTest {
 
     @Test
     fun `When remove with operator element with value 50 Then 50th value will be 51`() {
-        myArrayList.clear()
-
         repeat(100) { myArrayList.add(it) }
         myArrayList - 50
         val actual = myArrayList.get(50)
@@ -150,8 +124,6 @@ class MyMutableLinkedListImplTest {
 
     @Test
     fun `When list is cleared then size is 0`() {
-        myArrayList.clear()
-
         repeat(100) { myArrayList.add(it) }
         myArrayList.clear()
         val actual = myArrayList.size
@@ -161,8 +133,6 @@ class MyMutableLinkedListImplTest {
 
     @Test
     fun `When add 100 elements and then contains 50 is true`() {
-        myArrayList.clear()
-
         repeat(100) { myArrayList.add(it) }
         myArrayList.contains(50)
         val actual = myArrayList.contains(50)
@@ -171,8 +141,6 @@ class MyMutableLinkedListImplTest {
 
     @Test
     fun `When add 100 elements and then contains 100 is false`() {
-        myArrayList.clear()
-
         repeat(100) { myArrayList.add(it) }
         val actual = myArrayList.contains(100)
         assertFalse(actual)
