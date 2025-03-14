@@ -13,7 +13,20 @@ private fun main() {
     showCount(workers)
 
     // инвариантность MutableList<E>. Изменяемые типы нельзя делать ковариантными
-    //val mutableWorkers: MyMutableList<Worker> = myMutableListOf<Programmer>(Programmer("Nick"), Programmer("Natalie"))
+    //val mutableWorkers: MutableList<Worker> = mutableListOf()<Programmer>(Programmer("Nick"), Programmer("Natalie"))
+}
+
+// Пример с ошибкой. Когда сделали изменяемый тип ковариантным и к чему это приведет
+// Мы можем привести к родительскому классу any и засунуть абсолютно любой объект в коллекцию с работниками
+// И при обращении к колекции возникнет ошибка, потому что в коллекции могут быть только работники А мы засунули Hello
+private fun tryToMakeCovariant() {
+    /*
+    val mutableWorkers: MyMutableList<Worker> =
+        myMutableListOf<Programmer>(Programmer("Nick"), Programmer("Natalie"))
+    val any: MyMutableList<Any> = mutableWorkers
+    any.add("Hello")
+    println(any)
+     */
 }
 
 private fun showName(worker: Worker) {
