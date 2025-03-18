@@ -1,4 +1,4 @@
-package com.example.infix
+package com.example.functions.infix
 
 private fun main() {
     val myList1 = listOf(1.myTo("One"), 2.myTo("Two"))
