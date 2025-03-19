@@ -1,10 +1,10 @@
 package com.example.functions.scopeFunctions
 
 fun main() {
-    val list = listOf(1,2,3)
+    val list = listOf(1, 2, 3)
 
     // можем писать так
-    list.forEach{
+    list.forEach {
         println(it)
     }
 

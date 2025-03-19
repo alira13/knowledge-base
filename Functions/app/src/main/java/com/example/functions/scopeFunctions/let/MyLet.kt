@@ -1,7 +1,4 @@
-package com.example.functions.scopeFunctions
-
-import kotlin.contracts.InvocationKind
-import kotlin.contracts.contract
+package com.example.functions.scopeFunctions.let
 
 // Вызывает функцию lambda c аргументом this и возвращает результат
 // может быть вызвала и у not null значения

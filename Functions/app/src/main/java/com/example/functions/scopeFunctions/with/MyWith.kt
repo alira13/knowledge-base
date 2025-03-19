@@ -1,7 +1,4 @@
-package com.example.functions.scopeFunctions
-
-import kotlin.contracts.InvocationKind
-import kotlin.contracts.contract
+package com.example.functions.scopeFunctions.with
 
 // C ЭТИМ ОБЪЕКТОМ произведи какие-то действия и верни результат
 inline fun <T, R> myWith(element: T, lambda: T.() -> R): R {

@@ -1,4 +1,4 @@
-package com.example.functions.scopeFunctions
+package com.example.functions.scopeFunctions.also
 
 /**
  * Обрабатывает коллекцию строк с использованием цепочки преобразований.

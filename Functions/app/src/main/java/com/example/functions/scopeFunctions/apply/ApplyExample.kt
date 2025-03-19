@@ -1,4 +1,4 @@
-package com.example.functions.scopeFunctions
+package com.example.functions.scopeFunctions.apply
 
 import android.graphics.Color
 
@@ -47,8 +47,8 @@ fun main() {
     println(labelApply)
 }
 
-private class Label(){
-    var text:String = ""
-    var font:String = ""
+private class Label {
+    var text: String = ""
+    var font: String = ""
     var foreground: Int = Color.BLUE
 }
