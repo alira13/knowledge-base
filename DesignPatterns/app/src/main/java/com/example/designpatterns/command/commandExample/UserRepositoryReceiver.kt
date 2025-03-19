@@ -1,11 +1,11 @@
-package com.example.designpatterns.command.commandImpl
+package com.example.designpatterns.command.commandExample
 
 import com.example.designpatterns.observer.mutableObservable.MutableObservable
 import com.example.designpatterns.observer.mutableObservable.Observable
 
 
 // Receiver
-class UserRepository {
+class UserRepositoryReceiver {
     // Данные, с которыми мы работаем внутри репозитория
     private val _data = mutableListOf<String>()
 

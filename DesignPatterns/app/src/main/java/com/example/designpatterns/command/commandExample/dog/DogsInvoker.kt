@@ -1,5 +1,7 @@
-package com.example.designpatterns.command.commandImpl
+package com.example.designpatterns.command.commandExample.dog
 
+import com.example.designpatterns.command.commandExample.Invoker
+import com.example.designpatterns.command.commandImpl.Command
 import java.util.concurrent.LinkedBlockingQueue
 import kotlin.concurrent.thread
 

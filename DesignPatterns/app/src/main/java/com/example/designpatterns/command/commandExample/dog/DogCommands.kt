@@ -1,4 +1,6 @@
-package com.example.designpatterns.command.commandImpl
+package com.example.designpatterns.command.commandExample.dog
+
+import com.example.designpatterns.command.commandImpl.Command
 
 sealed interface DogCommands : Command {
     class RunCommand : Command {

@@ -1,12 +1,15 @@
-package com.example.designpatterns.command.commandImpl
+package com.example.designpatterns.command.commandExample
 
+import com.example.designpatterns.command.commandExample.worker.WorkInvoker
+import com.example.designpatterns.command.commandExample.worker.WorkerCommands
 import com.example.designpatterns.observer.mutableObservable.UserLogger
 import kotlin.random.Random
 
 // Client - просто вызывает методы Invoker
-class Worker {
+class WorkerClient {
     fun work() {
-        val repository = UserRepository()
+        val repository = UserRepositoryReceiver()
+
         val userLogger1 = UserLogger("LOGGER1")
         repository.observableData.addOnDataChangeListener(userLogger1)
 
@@ -24,5 +27,9 @@ class Worker {
             userIds.add(id)
         }
     }
+}
+
+fun main() {
+    WorkerClient().work()
 }
 

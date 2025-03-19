@@ -1,6 +1,6 @@
 package com.example.designpatterns.command.commandImpl
 
-// Вызывающий команды
+// каким именно образом мы будем выполнять команды. Вытаскивать из очереди или по каким-то условиям
 interface Invoker<T : Command> {
-    fun addCommand(command: Command)
+    fun executeCommand(command: T)
 }
