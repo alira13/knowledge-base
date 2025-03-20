@@ -1,4 +1,4 @@
-package com.example.functions.scopeFunctions
+package com.example.functions.scopeFunctions.apply
 
 // Сама является функцией расширения класса T
 // Принимает на вход функцию, которая расширяет класс T

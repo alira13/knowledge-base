@@ -1,4 +1,4 @@
-package com.example.functions.scopeFunctions
+package com.example.functions.scopeFunctions.also
 
 // выполни ТАКЖЕ какое-то действие НЕ ИЗМЕНЯЯ объект, верни сам объект
 inline fun <T> T.myAlso(lambda: (T) -> Unit): T {

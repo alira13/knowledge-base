@@ -1,4 +1,4 @@
-package com.example.functions.scopeFunctions
+package com.example.functions.scopeFunctions.with
 
 fun formatText(title: String, body: List<String>, footer: String): String {
     require(title.isNotBlank()) { "Title must not be blank" }
