@@ -8,6 +8,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.jetpackcompose.R
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
