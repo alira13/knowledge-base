@@ -31,9 +31,10 @@
         android:text="@string/large_text" />
 
     <Button
+        android:id="@+id/btn_retry_game"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Понятно" />
+        android:text="Попробовать снова" />
 
 
 </LinearLayout>

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.jetpackcompose.R
 import com.example.jetpackcompose.databinding.FragmentWelcomeBinding
 
 class WelcomeFragment : Fragment() {
@@ -28,7 +29,17 @@ class WelcomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         // 4 Использовать Binding
-        val button = binding.btnAccept
+        binding.btnAccept.setOnClickListener {
+            launchGameFragment()
+        }
+    }
+
+    private fun launchGameFragment() {
+        requireActivity().supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.main, ChooseLevelFragment.newInstance())
+            .addToBackStack(null)
+            .commit()
     }
 
     // Удаляем ссылку на view чтобы если мы в каких-то методах обратились к view где она недоступна, сразу была ошибка
