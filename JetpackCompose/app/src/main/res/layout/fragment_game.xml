@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".game.presentation.GameFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+
     <TextView
         android:id="@+id/tv_timer"
         android:layout_width="wrap_content"
@@ -26,8 +26,8 @@
         android:layout_margin="16dp"
         android:background="@drawable/circle_shape"
         android:gravity="center"
-        android:text="1"
         android:padding="8dp"
+        android:text="1"
         android:textColor="@color/white"
         android:textSize="32sp"
         app:layout_constraintBottom_toTopOf="@id/iv_visible_sum_value"
@@ -41,13 +41,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        app:layout_constraintDimensionRatio="1:1"
         android:background="@color/teal_200"
         android:gravity="center"
-        android:text="7"
         android:padding="8dp"
+        android:text="7"
         android:textColor="@color/white"
         android:textSize="32sp"
+        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="@id/iv_sum_value"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_max_sum_value"
@@ -58,13 +58,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        app:layout_constraintDimensionRatio="1:1"
         android:background="@color/teal_200"
         android:gravity="center"
-        android:text="\?"
         android:padding="8dp"
+        android:text="\?"
         android:textColor="@color/white"
         android:textSize="32sp"
+        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/iv_visible_sum_value"
         app:layout_constraintTop_toBottomOf="@id/iv_max_sum_value"
@@ -91,4 +91,84 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_answers_progress" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pb_status">
+
+        <TextView
+            android:id="@+id/tv_answer_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@color/purple_200"
+            android:gravity="center"
+            android:padding="4dp"
+            android:textColor="@color/white"
+            android:textSize="32dp"
+            tools:text="1"></TextView>
+
+        <TextView
+            android:id="@+id/tv_answer_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@color/purple_200"
+            android:gravity="center"
+            android:padding="4dp"
+            android:textColor="@color/white"
+            android:textSize="32dp"
+            tools:text="2"></TextView>
+
+        <TextView
+            android:id="@+id/tv_answer_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@color/purple_200"
+            android:gravity="center"
+            android:padding="4dp"
+            android:textColor="@color/white"
+            android:textSize="32dp"
+            tools:text="3"></TextView>
+
+        <TextView
+            android:id="@+id/tv_answer_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@color/purple_200"
+            android:gravity="center"
+            android:padding="4dp"
+            android:textColor="@color/white"
+            android:textSize="32dp"
+            tools:text="4"></TextView>
+
+        <TextView
+            android:id="@+id/tv_answer_5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@color/purple_200"
+            android:gravity="center"
+            android:padding="4dp"
+            android:textColor="@color/white"
+            android:textSize="32dp"
+            tools:text="5"></TextView>
+
+        <TextView
+            android:id="@+id/tv_answer_6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@color/purple_200"
+            android:gravity="center"
+            android:padding="4dp"
+            android:textColor="@color/white"
+            android:textSize="32dp"
+            tools:text="6"></TextView>
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

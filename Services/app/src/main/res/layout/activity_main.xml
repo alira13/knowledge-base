@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btn_service1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Service 1"
+        android:textAllCaps="true" />
+
+    <Button
+        android:id="@+id/btn_service2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Service 2"
+        android:textAllCaps="true" />
+
+    <Button
+        android:id="@+id/btn_service3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Service 3"
+        android:textAllCaps="true" />
+
+    <Button
+        android:id="@+id/btn_service4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Service 4"
+        android:textAllCaps="true" />
+
+    <Button
+        android:id="@+id/btn_service5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Service 5"
+        android:textAllCaps="true" />
+
+    <Button
+        android:id="@+id/btn_service6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Service 6"
+        android:textAllCaps="true" />
+</LinearLayout>
