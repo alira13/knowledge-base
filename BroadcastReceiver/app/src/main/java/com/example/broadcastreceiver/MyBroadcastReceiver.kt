@@ -6,6 +6,7 @@ import android.content.Intent
 import android.widget.Toast
 
 open class MyBroadcastReceiver : BroadcastReceiver() {
+    // вызывается на главном потоке но так как нет тяжеловесных операций то не блокирует поток
     override fun onReceive(context: Context?, intent: Intent?) {
         when (intent?.action) {
             Intent.ACTION_AIRPLANE_MODE_CHANGED -> {

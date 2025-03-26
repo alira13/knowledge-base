@@ -12,9 +12,12 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 
 class MainActivity : AppCompatActivity() {
-
+    private val localBroadcastManager: LocalBroadcastManager by lazy {
+        LocalBroadcastManager.getInstance(this)
+    }
 
     private val systemOrCustomBroadcastReceiver = MyBroadcastReceiver()
     private var clickNum = 0
@@ -81,13 +84,13 @@ class MainActivity : AppCompatActivity() {
         // говорим какого типа интент будем ловить
         val progressBarIntentFilter = IntentFilter(LoadingService.INTENT_NAME)
         // подписываемся
-        registerReceiver(progressBarBroadcastReceiver, progressBarIntentFilter)
+        localBroadcastManager.registerReceiver(progressBarBroadcastReceiver, progressBarIntentFilter)
     }
 
     // чтобы не было утечек памяти, нужно отписаться
     override fun onDestroy() {
         super.onDestroy()
         unregisterReceiver(systemOrCustomBroadcastReceiver)
-        unregisterReceiver(progressBarBroadcastReceiver)
+        localBroadcastManager.unregisterReceiver(progressBarBroadcastReceiver)
     }
 }
