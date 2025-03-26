@@ -5,7 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.widget.Toast
 
-class MyBroadcastReceiver : BroadcastReceiver() {
+open class MyBroadcastReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
         when (intent?.action) {
             Intent.ACTION_AIRPLANE_MODE_CHANGED -> {
@@ -18,6 +18,19 @@ class MyBroadcastReceiver : BroadcastReceiver() {
             Intent.ACTION_BATTERY_LOW -> {
                 Toast.makeText(context, "Low battery", Toast.LENGTH_SHORT).show()
             }
+
+            // когда создаем свое событие и на него реагируем
+            ACTION_CLICKED -> {
+                val clickNum = intent.getIntExtra(ACTION_CLICK_NUM, 1)
+                Toast.makeText(context, "Button clicked $clickNum", Toast.LENGTH_SHORT).show()
+            }
+
+
         }
+    }
+
+    companion object {
+        const val ACTION_CLICKED = "clicked"
+        const val ACTION_CLICK_NUM = "clickNum"
     }
 }
