@@ -47,7 +47,7 @@ class MyIntentService : IntentService("MyIntentService") {
     }
 
     private fun showLog(str: String) {
-        Log.d("MY_SERVICE", "MyIntentService: $str")
+        Log.d("MY_SERVICE", "MyForegroundService: $str")
     }
 
     // c 26 версии нужно показывать уведомление при запуске сервиса

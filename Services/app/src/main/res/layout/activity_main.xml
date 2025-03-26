@@ -11,41 +11,48 @@
         android:id="@+id/btn_service1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Service 1"
+        android:text="Service"
         android:textAllCaps="true" />
 
     <Button
         android:id="@+id/btn_service2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Service 2"
+        android:text="Foreground service"
         android:textAllCaps="true" />
 
     <Button
         android:id="@+id/btn_service3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Service 3"
+        android:text="intent service"
         android:textAllCaps="true" />
 
     <Button
         android:id="@+id/btn_service4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Service 4"
+        android:text="Job service"
         android:textAllCaps="true" />
 
     <Button
         android:id="@+id/btn_service5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Service 5"
+        android:text=""
         android:textAllCaps="true" />
 
     <Button
         android:id="@+id/btn_service6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Service 6"
+        android:text="Worker manager"
+        android:textAllCaps="true" />
+
+    <Button
+        android:id="@+id/btn_service7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
         android:textAllCaps="true" />
 </LinearLayout>
